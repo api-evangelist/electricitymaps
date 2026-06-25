@@ -1,0 +1,157 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Electricity Maps
+providerId: electricitymaps
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Energy
+- Carbon Intensity
+- Electricity
+- Grid
+- Sustainability
+- Plans
+description: >-
+  Electricity Maps offers a free, personal, non-commercial tier that grants an
+  API key for limited zones and endpoints (carbon intensity and power breakdown
+  latest/history), plus a commercial offering sold per data signal and per zone.
+  Commercial pricing is signal-based - sustainability signals (carbon intensity)
+  and market/grid signals (electricity mix, prices, flows) are licensed annually,
+  with bundle, regional, volume, and startup discounts. A time-limited free trial
+  is available for evaluating commercial signals.
+notes: >-
+  Free-tier limits, zone coverage, and exact commercial signal prices are not
+  reconciled here. Verify current free-tier scope on the API portal and request a
+  commercial quote from Electricity Maps sales during reconciliation. Published
+  figures below are indicative and subject to change.
+sources:
+- https://www.electricitymaps.com/pricing
+- https://portal.electricitymaps.com/docs/api
+- https://help.electricitymaps.com/en/articles/13168690-understanding-and-using-the-electricity-maps-api
+plans:
+- id: electricitymaps-free
+  name: Free Personal Tier
+  type: free
+  description: >-
+    Free, non-commercial API key for personal and evaluation use, with access to
+    a limited set of zones and endpoints. Obtained by signing up to the Free Tier
+    product on the Electricity Maps API portal.
+  entries:
+  - label: Carbon Intensity & Power Breakdown (limited zones)
+    name: free_access
+    type: free
+    metric: requests
+    limit: -1
+    timeFrame: month
+    geo: limited
+    unit: 1
+    price: free (non-commercial)
+    userMultiplied: false
+  elements:
+  - name: Carbon Intensity (latest/history)
+  - name: Power Breakdown (latest/history)
+  - name: Zones
+  - name: Health
+- id: electricitymaps-trial
+  name: Commercial Free Trial
+  type: trial
+  description: >-
+    Time-limited trial of commercial signals for your region and signals of
+    interest, with no payment information required, to evaluate before committing.
+  entries:
+  - label: Trial Access
+    name: trial
+    type: trial
+    metric: days
+    limit: 14
+    timeFrame: day
+    geo: selected
+    unit: 1
+    price: free during trial window
+    userMultiplied: false
+  elements:
+  - name: Selected Signals
+  - name: Selected Zones
+- id: electricitymaps-commercial
+  name: Commercial Signals
+  type: subscription
+  description: >-
+    Per-signal commercial licensing of grid and sustainability data, priced
+    annually per signal with bundle, regional, volume, and startup discounts.
+    Includes 3 months trailing history and 24-72 hour forecasts; extended
+    historical data and sub-hourly granularity available on request.
+  entries:
+  - label: Sustainability Signal (carbon intensity)
+    name: signal_sustainability
+    type: flat
+    metric: signal
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: indicative ~EUR 6,000 / year per signal (verify with sales)
+    userMultiplied: false
+  - label: Market / Grid Signal (electricity mix, prices, flows)
+    name: signal_market_grid
+    type: flat
+    metric: signal
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: indicative ~EUR 6,000 / year per signal (verify with sales)
+    userMultiplied: false
+  - label: Load / Percentage Signal (total load, net load, renewable %, carbon-free %)
+    name: signal_load_percentage
+    type: flat
+    metric: signal
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: indicative ~EUR 4,500 / year per signal (verify with sales)
+    userMultiplied: false
+  - label: Signal Bundle
+    name: signal_bundle
+    type: flat
+    metric: bundle
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: bundle discounts available (verify with sales)
+    userMultiplied: false
+  elements:
+  - name: Carbon Intensity
+  - name: Power Breakdown / Electricity Mix
+  - name: Power Consumption & Production
+  - name: Forecast
+  - name: Zones
+- id: electricitymaps-enterprise
+  name: Enterprise & Custom
+  type: enterprise
+  description: >-
+    Custom arrangements for extended historical data (2017 onward), sub-hourly
+    granularity, large zone coverage, and volume commitments, with startup
+    discounts for smaller companies. Contact Electricity Maps sales.
+  entries:
+  - label: Custom Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Extended Historical Data
+  - name: Sub-Hourly Granularity
+  - name: Custom Zone Coverage
+  - name: Startup Discount
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

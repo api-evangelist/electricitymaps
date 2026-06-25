@@ -1,0 +1,72 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Electricity Maps
+providerId: electricitymaps
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Energy
+- Carbon Intensity
+- Electricity
+- Grid
+- Sustainability
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  The Electricity Maps API applies per-token access controls and usage limits
+  that vary by plan. The free personal tier is restricted in the set of zones and
+  endpoints it can call, and commercial entitlements are scoped to the licensed
+  signals and zones. Per-token request-rate and quota values are not published as
+  fixed numbers and are not reconciled in this artifact.
+notes: >-
+  Verify current per-token request rates, zone access, and quotas on the
+  Electricity Maps API portal at reconciliation; access scope is determined by the
+  signals and zones licensed for the key.
+sources:
+- https://portal.electricitymaps.com/docs/api
+- https://help.electricitymaps.com/en/articles/13168690-understanding-and-using-the-electricity-maps-api
+- https://www.electricitymaps.com/pricing
+responseCodes:
+  throttled: 429
+limits:
+- name: Requests
+  scope: token
+  metric: requests
+  limit: see provider documentation
+  notes: Per-token request rate varies by plan; not published as a fixed value.
+- name: Zone Access
+  scope: token
+  metric: zones
+  limit: plan-dependent
+  notes: Free tier is limited to a subset of zones; commercial tokens are scoped to licensed zones.
+- name: Endpoint Access
+  scope: token
+  metric: endpoints
+  limit: plan-dependent
+  notes: Accessible endpoints per zone are returned by the /zones endpoint for the caller's token.
+- name: History Window
+  scope: token
+  metric: days
+  limit: plan-dependent
+  notes: Trailing history (e.g. 3 months on commercial signals) is bounded by plan; extended history is custom.
+- name: Forecast Horizon
+  scope: token
+  metric: hours
+  limit: 24-72
+  notes: Forecast horizon (24-72 hours) depends on the licensed plan.
+- name: Unauthenticated Endpoints
+  scope: public
+  metric: endpoints
+  limit: zones, health
+  notes: The /zones and /health endpoints can be requested without an API key.
+policies:
+- name: Tiered Access
+  description: Zone, endpoint, history, and forecast access scale with the free, trial, commercial, and enterprise plans.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on HTTP 429.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

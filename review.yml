@@ -1,0 +1,64 @@
+aid: electricitymaps
+name: Electricity Maps
+review:
+  question: Does Electricity Maps expose a documented public WebSocket API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No streaming surface (WebSocket or HTTP Server-Sent Events) is documented
+    for the Electricity Maps API. The product is a request/response REST API
+    polled by the caller; near-real-time use is achieved by polling the latest
+    endpoints. No AsyncAPI document was authored because there is no event,
+    streaming, or push transport to model.
+findings:
+  summary: |
+    Electricity Maps does not publish a documented public WebSocket API. The
+    platform exposes only REST (HTTPS) endpoints under
+    https://api.electricitymap.org/v3, authenticated with an auth-token header
+    (the /zones and /health endpoints can be called without a key). Data is
+    retrieved by polling latest, history, and forecast endpoints; there is no
+    documented realtime, bidirectional, push, or Server-Sent Events surface for
+    carbon intensity, power breakdown, or any other signal.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.electricitymap.org/v3
+      documented: true
+    - protocol: SSE
+      scheme: https
+      documented: false
+      note: No Server-Sent Events stream is documented; updates are obtained by polling REST endpoints.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in the Electricity Maps API reference or help center as of the review date.
+  endpointsConfirmedRest:
+    - GET https://api.electricitymap.org/v3/carbon-intensity/latest
+    - GET https://api.electricitymap.org/v3/carbon-intensity/history
+    - GET https://api.electricitymap.org/v3/carbon-intensity/forecast
+    - GET https://api.electricitymap.org/v3/power-breakdown/latest
+    - GET https://api.electricitymap.org/v3/power-breakdown/history
+    - GET https://api.electricitymap.org/v3/power-breakdown/forecast
+    - GET https://api.electricitymap.org/v3/power-consumption-breakdown/latest
+    - GET https://api.electricitymap.org/v3/power-production-breakdown/latest
+    - GET https://api.electricitymap.org/v3/zones
+    - GET https://api.electricitymap.org/v3/health
+sources:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+    note: API reference lists REST base URL and auth-token header; no WebSocket or SSE mentioned.
+  - url: https://help.electricitymaps.com/en/articles/13168690-understanding-and-using-the-electricity-maps-api
+    type: Documentation
+    note: Help center describes polling REST endpoints with an API key; no streaming transport.
+  - url: https://www.electricitymaps.com/
+    type: Website
+    note: Product framed as a data API for grid carbon intensity and power breakdown; no realtime socket product.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: false
+  reason: |
+    No WebSocket or SSE protocol surface exists, so no AsyncAPI document was
+    authored and no AsyncAPI property was added to apis.yml. The catalog
+    accurately represents the API as REST-only.

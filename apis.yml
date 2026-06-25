@@ -1,0 +1,133 @@
+aid: electricitymaps
+url: https://raw.githubusercontent.com/api-evangelist/electricitymaps/refs/heads/main/apis.yml
+name: Electricity Maps
+kind: company
+description: Electricity Maps provides electricity grid data - carbon intensity and
+  power production/consumption breakdown - for 200+ zones worldwide, in real time,
+  as historical series, and as 24-72 hour forecasts. The REST API serves the same
+  data behind the live electricity map at app.electricitymap.org, authenticated with
+  an auth-token header.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Energy
+- Carbon Intensity
+- Electricity
+- Grid
+- Sustainability
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: electricitymaps:carbon-intensity-api
+  name: Electricity Maps Carbon Intensity API
+  tags:
+  - Carbon Intensity
+  - Emissions
+  - gCO2eq
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  properties:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+  - url: https://portal.electricitymaps.com/docs/api#carbon-intensity
+    type: APIReference
+  - url: openapi/electricitymaps-openapi.yml
+    type: OpenAPI
+  description: Last-known, 24-hour history, and 24-72 hour forecast carbon intensity
+    (gCO2eq/kWh) of electricity consumed in a zone, queryable by zone identifier or
+    by latitude/longitude geolocation.
+- aid: electricitymaps:power-breakdown-api
+  name: Electricity Maps Power Breakdown API
+  tags:
+  - Power Breakdown
+  - Generation
+  - Electricity Mix
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  properties:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+  - url: https://portal.electricitymaps.com/docs/api#power-breakdown
+    type: APIReference
+  - url: openapi/electricitymaps-openapi.yml
+    type: OpenAPI
+  description: Combined power consumption and production breakdown for a zone by source
+    (nuclear, solar, wind, hydro, gas, coal, oil, biomass, geothermal, battery), with
+    import/export flows, available as latest, 24-hour history, and forecast.
+- aid: electricitymaps:power-consumption-production-api
+  name: Electricity Maps Power Consumption & Production API
+  tags:
+  - Power Consumption
+  - Power Production
+  - Flow Tracing
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  properties:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+  - url: https://portal.electricitymaps.com/docs/api#power-consumption-breakdown
+    type: APIReference
+  - url: openapi/electricitymaps-openapi.yml
+    type: OpenAPI
+  description: Dedicated flow-traced power consumption breakdown and physical power
+    production breakdown endpoints for a zone, reporting megawatts per source and
+    net import/export exchanges with neighbouring zones.
+- aid: electricitymaps:zones-api
+  name: Electricity Maps Zones API
+  tags:
+  - Zones
+  - Coverage
+  - Metadata
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  properties:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+  - url: https://portal.electricitymaps.com/docs/api#zones
+    type: APIReference
+  - url: openapi/electricitymaps-openapi.yml
+    type: OpenAPI
+  description: Lists all available zones with the endpoints accessible for the caller's
+    token, plus a health endpoint reporting API status. Both can be requested without
+    an API key.
+- aid: electricitymaps:forecast-api
+  name: Electricity Maps Forecast API
+  tags:
+  - Forecast
+  - Predictions
+  - Day Ahead
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  properties:
+  - url: https://portal.electricitymaps.com/docs/api
+    type: Documentation
+  - url: https://portal.electricitymaps.com/docs/api#forecast
+    type: APIReference
+  - url: openapi/electricitymaps-openapi.yml
+    type: OpenAPI
+  description: 24-72 hour ahead forecasts of carbon intensity and power production
+    breakdown for a zone, used to schedule compute and other loads toward lower-carbon
+    hours.
+common:
+- type: GitHubOrganization
+  url: https://github.com/electricitymaps
+- type: LinkedIn
+  url: https://www.linkedin.com/company/electricitymaps
+- type: Website
+  url: https://www.electricitymaps.com
+- type: Documentation
+  url: https://portal.electricitymaps.com/docs/api
+- type: Plans
+  url: plans/electricitymaps-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/electricitymaps-rate-limits.yml
+- type: FinOps
+  url: finops/electricitymaps-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

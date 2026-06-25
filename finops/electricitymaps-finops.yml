@@ -1,0 +1,104 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Electricity Maps
+providerId: electricitymaps
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Energy
+- Carbon Intensity
+- Electricity
+- Grid
+- Sustainability
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Electricity Maps spend. Electricity Maps licenses grid data per
+  signal (carbon intensity, electricity mix, prices, flows, loads) and per zone on
+  an annual subscription basis, with bundle, regional, volume, and startup
+  discounts. A free non-commercial tier and a time-limited commercial trial exist.
+  Cost is driven by the number of signals and zones licensed and the history /
+  granularity options, not by per-request metering.
+notes: >-
+  Exact annual signal prices and discount schedules are not reconciled here;
+  request a current quote from Electricity Maps sales during reconciliation.
+sources:
+- https://www.electricitymaps.com/pricing
+- https://portal.electricitymaps.com/docs/api
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Electricity Maps
+serviceCategory: Analytics
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Annual
+  billingCurrency: EUR
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Electricity Maps API
+  ServiceCategory: Analytics
+  ProviderName: Electricity Maps
+  PublisherName: Electricity Maps
+  InvoiceIssuerName: Electricity Maps
+  BillingCurrency: EUR
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: licensed_signals
+  description: Number of data signals licensed (carbon intensity, electricity mix, prices, flows, loads), billed annually per signal.
+  unit: signals
+  aggregation: sum
+  dimensions:
+  - account
+  - signal
+- name: licensed_zones
+  description: Number of zones licensed across the subscribed signals.
+  unit: zones
+  aggregation: sum
+  dimensions:
+  - account
+  - zone
+- name: history_window
+  description: Length of trailing or extended historical data licensed per signal.
+  unit: days
+  aggregation: max
+  dimensions:
+  - account
+  - signal
+- name: temporal_granularity
+  description: Data resolution licensed (hourly standard; 15-minute / 5-minute on request).
+  unit: granularity
+  aggregation: max
+  dimensions:
+  - account
+  - signal
+- name: api_requests
+  description: Requests made against the API; bounded by per-token plan limits rather than directly metered for billing.
+  unit: requests
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+principles:
+- name: Visibility
+  description: Track which signals and zones are licensed per token and map them to internal teams and products.
+- name: Allocation
+  description: Issue separate API tokens per workload and tag them to cost centers; signals/zones define the cost surface.
+- name: Optimization
+  description: License only the signals and zones in use; prefer bundle, regional, volume, and startup discounts; use the free tier and trial before committing.
+- name: Accountability
+  description: Review the annual signal/zone subscription at renewal against actual usage and product needs.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

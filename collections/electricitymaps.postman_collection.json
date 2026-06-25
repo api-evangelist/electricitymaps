@@ -1,0 +1,207 @@
+{
+  "info": {
+    "name": "Electricity Maps API",
+    "description": {
+      "content": "REST API for electricity grid carbon intensity and power production/consumption breakdown across 200+ zones worldwide, authenticated with an auth-token header. The /zones and /health endpoints can be called without an API key.",
+      "type": "text/plain"
+    },
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.electricitymap.org/v3"
+    },
+    {
+      "key": "authToken",
+      "value": ""
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{authToken}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "item": [
+    {
+      "name": "Carbon Intensity",
+      "item": [
+        {
+          "name": "Latest carbon intensity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carbon-intensity/latest?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["carbon-intensity", "latest"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last known carbon intensity (gCO2eq/kWh) of electricity consumed in a zone, by zone identifier or lat/lon."
+          },
+          "response": []
+        },
+        {
+          "name": "Carbon intensity history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carbon-intensity/history?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["carbon-intensity", "history"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last 24 hours of carbon intensity for a zone at hourly resolution."
+          },
+          "response": []
+        },
+        {
+          "name": "Carbon intensity forecast",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/carbon-intensity/forecast?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["carbon-intensity", "forecast"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the forecasted carbon intensity for a zone, 24-72 hours ahead depending on plan."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Power Breakdown",
+      "item": [
+        {
+          "name": "Latest power breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/power-breakdown/latest?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["power-breakdown", "latest"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last known power consumption and production breakdown of a zone, with import/export flows."
+          },
+          "response": []
+        },
+        {
+          "name": "Power breakdown history",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/power-breakdown/history?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["power-breakdown", "history"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last 24 hours of power consumption and production breakdown for a zone at 60-minute resolution."
+          },
+          "response": []
+        },
+        {
+          "name": "Power breakdown forecast",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/power-breakdown/forecast?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["power-breakdown", "forecast"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the forecasted power production breakdown for a zone, 24-72 hours ahead depending on plan."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Power Consumption & Production",
+      "item": [
+        {
+          "name": "Latest power consumption breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/power-consumption-breakdown/latest?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["power-consumption-breakdown", "latest"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last known flow-traced power consumption breakdown of a zone in MW per production type."
+          },
+          "response": []
+        },
+        {
+          "name": "Latest power production breakdown",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/power-production-breakdown/latest?zone=DE",
+              "host": ["{{baseUrl}}"],
+              "path": ["power-production-breakdown", "latest"],
+              "query": [{ "key": "zone", "value": "DE" }]
+            },
+            "description": "Retrieves the last known physical power production breakdown of a zone in MW per production type."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Zones & Health",
+      "item": [
+        {
+          "name": "List zones",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/zones",
+              "host": ["{{baseUrl}}"],
+              "path": ["zones"]
+            },
+            "description": "Returns all available zones and the endpoints accessible for the caller's token. Can be requested without an API key."
+          },
+          "response": []
+        },
+        {
+          "name": "API health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            },
+            "description": "Returns the operational status of the API. Can be requested without an API key."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
