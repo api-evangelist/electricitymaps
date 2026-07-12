@@ -1,0 +1,40 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.electricitymaps.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 17 04:55:10 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: portal.electricitymaps.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 16 11:24:25 2026 GMT
+  hsts: true
+  hsts_max_age: 15552000
+- host: api.electricitymap.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Aug 29 23:42:36 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+domains:
+- domain: electricitymaps.com
+  dnssec: false
+  caa:
+  - 0 issue "comodoca.com"
+  - 0 issue "digicert.com; cansignhttpexchanges=yes"
+  - 0 issue "letsencrypt.org"
+  - 0 issue "pki.goog; cansignhttpexchanges=yes"
+  - 0 issue "ssl.com"
+  - 0 issuewild "comodoca.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
+- domain: electricitymap.org
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: false

@@ -114,6 +114,10 @@ apis:
     breakdown for a zone, used to schedule compute and other loads toward lower-carbon
     hours.
 common:
+- type: DomainSecurity
+  url: security/electricitymaps-domain-security.yml
+- type: Authentication
+  url: authentication/electricitymaps-authentication.yml
 - type: GitHubOrganization
   url: https://github.com/electricitymaps
 - type: LinkedIn

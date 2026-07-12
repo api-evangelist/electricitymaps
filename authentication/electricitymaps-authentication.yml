@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/electricitymaps-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: authToken
+  type: apiKey
+  in: header
+  parameter: auth-token
+  description: API key issued from the Electricity Maps portal, sent in the auth-token header.
+  sources:
+  - openapi/electricitymaps-openapi.yml
