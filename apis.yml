@@ -114,6 +114,8 @@ apis:
     breakdown for a zone, used to schedule compute and other loads toward lower-carbon
     hours.
 common:
+- type: AgenticAccess
+  url: agentic-access/electricitymaps-agentic-access.yml
 - type: DomainSecurity
   url: security/electricitymaps-domain-security.yml
 - type: Authentication
