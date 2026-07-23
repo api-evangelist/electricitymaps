@@ -1,0 +1,56 @@
+openapi: 3.0.1
+info:
+  title: Electricity Maps Carbon Intensity Zones API
+  description: The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.
+  termsOfService: https://www.electricitymaps.com/legal-notice
+  contact:
+    name: Electricity Maps Support
+    url: https://www.electricitymaps.com
+  version: '3.0'
+servers:
+- url: https://api.electricitymap.org/v3
+security:
+- authToken: []
+tags:
+- name: Zones
+paths:
+  /zones:
+    get:
+      operationId: getZones
+      tags:
+      - Zones
+      summary: List zones
+      description: Returns all available zones and, for an authenticated token, the endpoints accessible for each zone. Can be requested without an API key.
+      security: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Zones'
+components:
+  schemas:
+    Zones:
+      type: object
+      additionalProperties:
+        type: object
+        properties:
+          zoneName:
+            type: string
+          access:
+            type: array
+            items:
+              type: string
+      example:
+        DE:
+          zoneName: Germany
+          access:
+          - carbon-intensity/latest
+          - power-breakdown/latest
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: auth-token
+      description: API key issued from the Electricity Maps portal, sent in the auth-token header.

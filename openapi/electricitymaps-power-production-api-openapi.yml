@@ -1,0 +1,134 @@
+openapi: 3.0.1
+info:
+  title: Electricity Maps Carbon Intensity Power Production API
+  description: The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.
+  termsOfService: https://www.electricitymaps.com/legal-notice
+  contact:
+    name: Electricity Maps Support
+    url: https://www.electricitymaps.com
+  version: '3.0'
+servers:
+- url: https://api.electricitymap.org/v3
+security:
+- authToken: []
+tags:
+- name: Power Production
+paths:
+  /power-production-breakdown/latest:
+    get:
+      operationId: getPowerProductionBreakdownLatest
+      tags:
+      - Power Production
+      summary: Latest power production breakdown
+      description: Retrieves the last known physical power production breakdown of a zone, in megawatts per production type, before flow tracing.
+      parameters:
+      - $ref: '#/components/parameters/zone'
+      - $ref: '#/components/parameters/lat'
+      - $ref: '#/components/parameters/lon'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerProductionBreakdown'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+  schemas:
+    SourceBreakdown:
+      type: object
+      description: Power in MW per production type. Values may be null when unknown.
+      properties:
+        nuclear:
+          type: number
+          nullable: true
+        geothermal:
+          type: number
+          nullable: true
+        biomass:
+          type: number
+          nullable: true
+        coal:
+          type: number
+          nullable: true
+        wind:
+          type: number
+          nullable: true
+        solar:
+          type: number
+          nullable: true
+        hydro:
+          type: number
+          nullable: true
+        gas:
+          type: number
+          nullable: true
+        oil:
+          type: number
+          nullable: true
+        unknown:
+          type: number
+          nullable: true
+        hydro discharge:
+          type: number
+          nullable: true
+        battery discharge:
+          type: number
+          nullable: true
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
+    PowerProductionBreakdown:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        powerProductionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerProductionTotal:
+          type: number
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: auth-token
+      description: API key issued from the Electricity Maps portal, sent in the auth-token header.

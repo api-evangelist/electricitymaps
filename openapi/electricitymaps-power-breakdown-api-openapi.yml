@@ -1,0 +1,228 @@
+openapi: 3.0.1
+info:
+  title: Electricity Maps Carbon Intensity Power Breakdown API
+  description: The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.
+  termsOfService: https://www.electricitymaps.com/legal-notice
+  contact:
+    name: Electricity Maps Support
+    url: https://www.electricitymaps.com
+  version: '3.0'
+servers:
+- url: https://api.electricitymap.org/v3
+security:
+- authToken: []
+tags:
+- name: Power Breakdown
+paths:
+  /power-breakdown/latest:
+    get:
+      operationId: getPowerBreakdownLatest
+      tags:
+      - Power Breakdown
+      summary: Latest power breakdown
+      description: Retrieves the last known power consumption and production breakdown of a zone, representing the physical origin of electricity broken down by production type, with import/export flows. Queryable by zone or geolocation.
+      parameters:
+      - $ref: '#/components/parameters/zone'
+      - $ref: '#/components/parameters/lat'
+      - $ref: '#/components/parameters/lon'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerBreakdown'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /power-breakdown/history:
+    get:
+      operationId: getPowerBreakdownHistory
+      tags:
+      - Power Breakdown
+      summary: Power breakdown history
+      description: Retrieves the last 24 hours of power consumption and production breakdown of a zone, with a resolution of 60 minutes.
+      parameters:
+      - $ref: '#/components/parameters/zone'
+      - $ref: '#/components/parameters/lat'
+      - $ref: '#/components/parameters/lon'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerBreakdownHistory'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /power-breakdown/forecast:
+    get:
+      operationId: getPowerBreakdownForecast
+      tags:
+      - Power Breakdown
+      summary: Power breakdown forecast
+      description: Retrieves the forecasted power production breakdown of a zone, up to 24-72 hours ahead depending on plan.
+      parameters:
+      - $ref: '#/components/parameters/zone'
+      - $ref: '#/components/parameters/lat'
+      - $ref: '#/components/parameters/lon'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PowerBreakdownForecast'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+  schemas:
+    SourceBreakdown:
+      type: object
+      description: Power in MW per production type. Values may be null when unknown.
+      properties:
+        nuclear:
+          type: number
+          nullable: true
+        geothermal:
+          type: number
+          nullable: true
+        biomass:
+          type: number
+          nullable: true
+        coal:
+          type: number
+          nullable: true
+        wind:
+          type: number
+          nullable: true
+        solar:
+          type: number
+          nullable: true
+        hydro:
+          type: number
+          nullable: true
+        gas:
+          type: number
+          nullable: true
+        oil:
+          type: number
+          nullable: true
+        unknown:
+          type: number
+          nullable: true
+        hydro discharge:
+          type: number
+          nullable: true
+        battery discharge:
+          type: number
+          nullable: true
+    PowerBreakdownHistory:
+      type: object
+      properties:
+        zone:
+          type: string
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/PowerBreakdown'
+    PowerBreakdownForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            $ref: '#/components/schemas/PowerBreakdown'
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
+    PowerBreakdown:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        powerConsumptionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerProductionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerImportBreakdown:
+          type: object
+          additionalProperties:
+            type: number
+            nullable: true
+        powerExportBreakdown:
+          type: object
+          additionalProperties:
+            type: number
+            nullable: true
+        fossilFreePercentage:
+          type: integer
+        renewablePercentage:
+          type: integer
+        powerConsumptionTotal:
+          type: number
+        powerProductionTotal:
+          type: number
+        powerImportTotal:
+          type: number
+        powerExportTotal:
+          type: number
+        isEstimated:
+          type: boolean
+        estimationMethod:
+          type: string
+          nullable: true
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: auth-token
+      description: API key issued from the Electricity Maps portal, sent in the auth-token header.
