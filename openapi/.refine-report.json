@@ -1,0 +1,26 @@
+{
+  "provider": "electricitymaps",
+  "sources": [
+    "electricitymaps-carbon-intensity-api-openapi.yml",
+    "electricitymaps-forecast-api-openapi.yml",
+    "electricitymaps-health-api-openapi.yml",
+    "electricitymaps-power-breakdown-api-openapi.yml",
+    "electricitymaps-power-consumption-api-openapi.yml",
+    "electricitymaps-power-production-api-openapi.yml",
+    "electricitymaps-zones-api-openapi.yml"
+  ],
+  "outputs": [
+    "electricitymaps-carbon-intensity-api-openapi.yml",
+    "electricitymaps-forecast-api-openapi.yml",
+    "electricitymaps-health-api-openapi.yml",
+    "electricitymaps-power-breakdown-api-openapi.yml",
+    "electricitymaps-power-consumption-api-openapi.yml",
+    "electricitymaps-power-production-api-openapi.yml",
+    "electricitymaps-zones-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
