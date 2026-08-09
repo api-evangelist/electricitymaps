@@ -2,11 +2,10 @@ aid: electricitymaps
 url: https://raw.githubusercontent.com/api-evangelist/electricitymaps/refs/heads/main/apis.yml
 name: Electricity Maps
 kind: company
-description: Electricity Maps provides electricity grid data - carbon intensity and
-  power production/consumption breakdown - for 200+ zones worldwide, in real time,
-  as historical series, and as 24-72 hour forecasts. The REST API serves the same
-  data behind the live electricity map at app.electricitymap.org, authenticated with
-  an auth-token header.
+description: Electricity Maps provides electricity grid data - carbon intensity and power production/consumption
+  breakdown - for 200+ zones worldwide, in real time, as historical series, and as 24-72 hour forecasts.
+  The REST API serves the same data behind the live electricity map at app.electricitymap.org, authenticated
+  with an auth-token header.
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -28,7 +27,7 @@ tags:
 - Grid
 - Sustainability
 created: '2026-06-21'
-modified: '2026-06-21'
+modified: '2026-08-08'
 specificationVersion: '0.19'
 apis:
 - aid: electricitymaps:electricitymaps-carbon-intensity-api
@@ -206,6 +205,20 @@ common:
   url: rate-limits/electricitymaps-rate-limits.yml
 - type: FinOps
   url: finops/electricitymaps-finops.yml
+- name: Electricity Maps Live App
+  url: https://app.electricitymaps.com
+  type: Application
+- name: Electricity Maps API Pricing
+  url: https://www.electricitymaps.com/api-pricing
+  type: Pricing
+- name: Electricity Maps Blog
+  url: https://www.electricitymaps.com/blog
+  type: Blog
+- name: Electricity Maps GitHub
+  url: https://github.com/electricitymaps
+  type: GitHub
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
+x-merged-from:
+- electricity-maps

@@ -1,0 +1,99 @@
+openapi: 3.1.0
+info:
+  title: Electricity Maps CarbonIntensity Pricing API
+  description: The Electricity Maps API delivers real-time, historical, and forecasted electricity grid signals worldwide, including carbon intensity, power breakdown by source, renewable and carbon-free percentages, electricity flows, total and net load, and day-ahead pricing. Each signal is available in three temporality variants (latest, past, forecast) and can be queried by zone identifier, geographic coordinates, or data center provider/region.
+  version: '3.0'
+  contact:
+    name: Electricity Maps Support
+    url: https://www.electricitymaps.com/contact
+  license:
+    name: Commercial
+    url: https://www.electricitymaps.com/api-pricing
+servers:
+- url: https://api.electricitymap.org
+  description: Production
+security:
+- authToken: []
+- basicAuth: []
+tags:
+- name: Pricing
+  description: Day-ahead electricity pricing.
+paths:
+  /v3/day-ahead-price/{temporality}:
+    get:
+      operationId: getDayAheadPrice
+      summary: Get day-ahead price
+      tags:
+      - Pricing
+      parameters:
+      - $ref: '#/components/parameters/Temporality'
+      - $ref: '#/components/parameters/Zone'
+      responses:
+        '200':
+          description: Day-ahead price signal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalResponse'
+components:
+  parameters:
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
+  schemas:
+    SignalResponse:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        isEstimated:
+          type: boolean
+        estimationMethod:
+          type: string
+          nullable: true
+        temporalGranularity:
+          type: string
+        emissionFactorType:
+          type: string
+        history:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        forecast:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+  securitySchemes:
+    authToken:
+      type: apiKey
+      in: header
+      name: auth-token
+      description: API token issued from the Electricity Maps portal.
+    basicAuth:
+      type: http
+      scheme: basic
+externalDocs:
+  description: Electricity Maps API Documentation
+  url: https://app.electricitymaps.com/docs/getting-started

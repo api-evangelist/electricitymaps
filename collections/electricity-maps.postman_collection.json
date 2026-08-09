@@ -1,0 +1,1438 @@
+{
+  "item": [
+    {
+      "id": "fbfe603d-f808-49ba-bd8f-f195cd1dee41",
+      "name": "Zones",
+      "description": {
+        "content": "Discover available zones and locate them by coordinates or data center.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ef2c53e1-f1bc-43c0-87b9-0c2b5c9977bb",
+          "name": "List available zones",
+          "request": {
+            "name": "List available zones",
+            "description": {
+              "content": "Returns the list of zones supported by the API. This endpoint does not require authentication.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "zones"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aad12171-855e-4549-bb6b-faea8772ca78",
+              "name": "Map of zone identifiers to zone metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "zones"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": {\n    \"zoneName\": \"string\",\n    \"countryName\": \"string\",\n    \"access\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e75ee24-9a9a-45f3-bcb1-f3a5a91d0c36",
+          "name": "Locate a zone by coordinates",
+          "request": {
+            "name": "Locate a zone by coordinates",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "zone"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "9c27bb73-9705-4090-99ca-72308df3a01d",
+              "name": "Zone matched at the supplied coordinates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zoneName\": \"string\",\n  \"countryName\": \"string\",\n  \"access\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9b43f42-c8b9-4fe4-8b37-2878b4977364",
+              "name": "No zone covers the supplied coordinates",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "zone"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "63945a03-539c-4419-9892-e074475c1ce9",
+          "name": "List available data centers",
+          "request": {
+            "name": "List available data centers",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "data-centers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c961b731-7991-427a-a2ca-92867c2a228d",
+              "name": "Data center list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "data-centers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"provider\": \"string\",\n    \"region\": \"string\",\n    \"zone\": \"string\"\n  },\n  {\n    \"provider\": \"string\",\n    \"region\": \"string\",\n    \"zone\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0e965791-a65a-40dd-aa1e-769140cb9606",
+      "name": "CarbonIntensity",
+      "description": {
+        "content": "Carbon intensity (gCO2eq/kWh) signals.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d796af6-5415-43de-8959-a2c61b921078",
+          "name": "Get carbon intensity signal",
+          "request": {
+            "name": "Get carbon intensity signal",
+            "description": {
+              "content": "Returns carbon intensity in gCO2eq/kWh for the requested zone and temporality.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "carbon-intensity",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<number>",
+                  "description": "Longitude (used in place of zone)."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<number>",
+                  "description": "Latitude (used in place of zone)."
+                },
+                {
+                  "disabled": false,
+                  "key": "temporalGranularity",
+                  "value": "hourly",
+                  "description": "Temporal aggregation of the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "emissionFactorType",
+                  "value": "lifecycle",
+                  "description": "Emission factor methodology."
+                },
+                {
+                  "disabled": false,
+                  "key": "disableEstimations",
+                  "value": "false",
+                  "description": "Exclude estimated data points."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69911941-a03c-46ab-b550-818424f4f894",
+              "name": "Carbon intensity signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "carbon-intensity",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<number>"
+                    },
+                    {
+                      "key": "temporalGranularity",
+                      "value": "hourly"
+                    },
+                    {
+                      "key": "emissionFactorType",
+                      "value": "lifecycle"
+                    },
+                    {
+                      "key": "disableEstimations",
+                      "value": "false"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "18dd1d0a-dc99-45d7-8b48-a5051414d82d",
+          "name": "Get fossil-only carbon intensity",
+          "request": {
+            "name": "Get fossil-only carbon intensity",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "fossil-only-carbon-intensity",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "80187e5b-53e0-424b-bb78-09c77e466079",
+              "name": "Signal response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "fossil-only-carbon-intensity",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d6ad47a8-57ef-4b5d-9355-600db2257dc0",
+      "name": "ElectricityMix",
+      "description": {
+        "content": "Power production and consumption breakdown by source.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5fae018e-f9ed-416e-b106-7c5ea48bb425",
+          "name": "Get electricity mix",
+          "request": {
+            "name": "Get electricity mix",
+            "description": {
+              "content": "Power production and consumption breakdown by source.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "v3",
+                "electricity-mix",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                },
+                {
+                  "disabled": false,
+                  "key": "temporalGranularity",
+                  "value": "hourly",
+                  "description": "Temporal aggregation of the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6dc73e0f-6546-4f05-8471-fba22b874d41",
+              "name": "Electricity mix response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "electricity-mix",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "temporalGranularity",
+                      "value": "hourly"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "38ccbe6c-5f40-44dd-9180-5c4c0f89c910",
+      "name": "Renewables",
+      "description": {
+        "content": "Renewable and carbon-free percentage signals.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de5484c9-649c-4812-8c4e-6c3597732be9",
+          "name": "Get renewable percentage",
+          "request": {
+            "name": "Get renewable percentage",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "renewable-percentage",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f3f18313-0732-49ec-9294-2bed35a20f8f",
+              "name": "Renewable percentage signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "renewable-percentage",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9be9cdd9-3338-4ed7-9945-ef9e0b601e96",
+          "name": "Get carbon-free percentage",
+          "request": {
+            "name": "Get carbon-free percentage",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "carbon-free-percentage",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4eb07b40-6666-4e82-a098-b39c51697c01",
+              "name": "Carbon-free percentage signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "carbon-free-percentage",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "0c83f2a0-124f-4389-a3cc-68dfe1b46c6c",
+      "name": "GridMetrics",
+      "description": {
+        "content": "Total load, net load, and electricity flows between zones.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "42ee197a-ad03-46d4-aec6-9931724ef467",
+          "name": "Get total load",
+          "request": {
+            "name": "Get total load",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "total-load",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f99b2759-df70-422e-9ef9-9a1af57f8c52",
+              "name": "Total load signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "total-load",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3e6d1740-8196-44c6-b5d6-1218016dd129",
+          "name": "Get net load",
+          "request": {
+            "name": "Get net load",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "net-load",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ba34240a-b9d4-4b7f-ba48-7e6a35f3f155",
+              "name": "Net load signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "net-load",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "417f038b-3fda-4826-983e-3b0237781f68",
+          "name": "Get electricity flows",
+          "request": {
+            "name": "Get electricity flows",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "electricity-flows",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "40ce30b9-abcd-4f0d-9ac9-0b39a4319ddb",
+              "name": "Electricity flows signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "electricity-flows",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "190c01ed-4436-4d81-9e10-eab56652abb6",
+      "name": "Pricing",
+      "description": {
+        "content": "Day-ahead electricity pricing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3426386-dffc-4006-ac86-743b7b26b25c",
+          "name": "Get day-ahead price",
+          "request": {
+            "name": "Get day-ahead price",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "day-ahead-price",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd90b7c1-6c30-4109-9b48-2aa438e25494",
+              "name": "Day-ahead price signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "day-ahead-price",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"2020-04-30T21:46:16.689Z\",\n  \"updatedAt\": \"2024-08-23T07:12:05.747Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 206.6975439220853,\n      \"key_1\": true,\n      \"key_2\": false,\n      \"key_3\": 7134\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "da6c34e0-ad85-4ada-a776-0274c2c860c8",
+    "name": "Electricity Maps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API delivers real-time, historical, and forecasted electricity grid signals worldwide, including carbon intensity, power breakdown by source, renewable and carbon-free percentages, electricity flows, total and net load, and day-ahead pricing. Each signal is available in three temporality variants (latest, past, forecast) and can be queried by zone identifier, geographic coordinates, or data center provider/region.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

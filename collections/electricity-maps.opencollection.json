@@ -1,0 +1,372 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List available zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/zones"
+          },
+          "docs": "Returns the list of zones supported by the API. This endpoint does not require authentication."
+        },
+        {
+          "info": {
+            "name": "Locate a zone by coordinates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/zone",
+            "params": [
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Locate a zone by coordinates"
+        },
+        {
+          "info": {
+            "name": "List available data centers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/data-centers"
+          },
+          "docs": "List available data centers"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CarbonIntensity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get carbon intensity signal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-intensity/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude (used in place of zone)."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude (used in place of zone)."
+              },
+              {
+                "name": "temporalGranularity",
+                "value": "",
+                "type": "query",
+                "description": "Temporal aggregation of the response."
+              },
+              {
+                "name": "emissionFactorType",
+                "value": "",
+                "type": "query",
+                "description": "Emission factor methodology."
+              },
+              {
+                "name": "disableEstimations",
+                "value": "",
+                "type": "query",
+                "description": "Exclude estimated data points."
+              }
+            ]
+          },
+          "docs": "Returns carbon intensity in gCO2eq/kWh for the requested zone and temporality."
+        },
+        {
+          "info": {
+            "name": "Get fossil-only carbon intensity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/fossil-only-carbon-intensity/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get fossil-only carbon intensity"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "ElectricityMix",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get electricity mix",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/electricity-mix/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              },
+              {
+                "name": "temporalGranularity",
+                "value": "",
+                "type": "query",
+                "description": "Temporal aggregation of the response."
+              }
+            ]
+          },
+          "docs": "Power production and consumption breakdown by source."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Renewables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get renewable percentage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/renewable-percentage/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get renewable percentage"
+        },
+        {
+          "info": {
+            "name": "Get carbon-free percentage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-free-percentage/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get carbon-free percentage"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GridMetrics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get total load",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/total-load/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get total load"
+        },
+        {
+          "info": {
+            "name": "Get net load",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/net-load/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get net load"
+        },
+        {
+          "info": {
+            "name": "Get electricity flows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/electricity-flows/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get electricity flows"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get day-ahead price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/day-ahead-price/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get day-ahead price"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
