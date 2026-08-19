@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps Carbon Intensity Zones API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Zones",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List zones",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/zones"
+          },
+          "docs": "Returns all available zones and, for an authenticated token, the endpoints accessible for each zone. Can be requested without an API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

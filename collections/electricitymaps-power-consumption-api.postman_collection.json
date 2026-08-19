@@ -1,0 +1,218 @@
+{
+  "item": [
+    {
+      "id": "a958700c-419f-4b1f-ad28-799494426464",
+      "name": "Power Consumption",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9f0973b3-6d4b-4df0-a2ff-8df6cbd63f3b",
+          "name": "Latest power consumption breakdown",
+          "request": {
+            "name": "Latest power consumption breakdown",
+            "description": {
+              "content": "Retrieves the last known flow-traced power consumption breakdown of a zone, in megawatts per production type, accounting for imports from neighbouring zones.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "power-consumption-breakdown",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d8325420-c967-4e34-811b-a7c2801ce272",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-consumption-breakdown",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"1988-11-15T12:55:24.127Z\",\n  \"powerConsumptionBreakdown\": {\n    \"nuclear\": 4093.277514553795,\n    \"geothermal\": 4090.3988145563976,\n    \"biomass\": 529.0613037308912,\n    \"coal\": 7645.4174462836,\n    \"wind\": 6949.986945355402,\n    \"solar\": 2257.7010862262846,\n    \"hydro\": 3740.6241477910294,\n    \"gas\": 3555.030646031041,\n    \"oil\": 2222.297185282079,\n    \"unknown\": 877.0561091966478,\n    \"hydro discharge\": 4118.326143322712,\n    \"battery discharge\": 9976.002145957393\n  },\n  \"powerConsumptionTotal\": 7875.443370777948\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "75baf63f-51af-4152-afc5-60b1a217de49",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-consumption-breakdown",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "86532b2b-0ab3-45a7-b747-9f6c0beb57c2",
+    "name": "Electricity Maps Carbon Intensity Power Consumption API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

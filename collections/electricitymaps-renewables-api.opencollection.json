@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps CarbonIntensity Renewables API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Renewables",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get renewable percentage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/renewable-percentage/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get renewable percentage"
+        },
+        {
+          "info": {
+            "name": "Get carbon-free percentage",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-free-percentage/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get carbon-free percentage"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

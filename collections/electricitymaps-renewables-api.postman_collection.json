@@ -1,0 +1,263 @@
+{
+  "item": [
+    {
+      "id": "56cb070c-a804-440f-874c-595d9ac4acc6",
+      "name": "Renewables",
+      "description": {
+        "content": "Renewable and carbon-free percentage signals.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "89c24b2b-7c1c-4478-af3b-6803dbd9b76b",
+          "name": "Get renewable percentage",
+          "request": {
+            "name": "Get renewable percentage",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "renewable-percentage",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d58a269c-6d9f-4651-9b31-99b74e167298",
+              "name": "Renewable percentage signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "renewable-percentage",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"1984-10-29T01:14:10.302Z\",\n  \"updatedAt\": \"1958-09-26T11:52:31.556Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 1313.6643056125652,\n      \"key_1\": 6344.018500138477,\n      \"key_2\": true,\n      \"key_3\": 851\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": 9849\n    },\n    {\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "da161fe2-e657-45aa-9aaa-29b5700c38b6",
+          "name": "Get carbon-free percentage",
+          "request": {
+            "name": "Get carbon-free percentage",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "carbon-free-percentage",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e51a0ae-7864-44cf-b316-df192b3dc52f",
+              "name": "Carbon-free percentage signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "carbon-free-percentage",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"1984-10-29T01:14:10.302Z\",\n  \"updatedAt\": \"1958-09-26T11:52:31.556Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": true,\n      \"key_1\": \"string\"\n    },\n    {\n      \"key_0\": 1313.6643056125652,\n      \"key_1\": 6344.018500138477,\n      \"key_2\": true,\n      \"key_3\": 851\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": 9849\n    },\n    {\n      \"key_0\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4d15c6c9-251d-4738-aaf2-2f22a5cc8788",
+    "name": "Electricity Maps CarbonIntensity Renewables API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API delivers real-time, historical, and forecasted electricity grid signals worldwide, including carbon intensity, power breakdown by source, renewable and carbon-free percentages, electricity flows, total and net load, and day-ahead pricing. Each signal is available in three temporality variants (latest, past, forecast) and can be queried by zone identifier, geographic coordinates, or data center provider/region.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

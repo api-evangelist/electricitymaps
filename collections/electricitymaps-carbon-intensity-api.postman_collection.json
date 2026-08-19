@@ -1,0 +1,556 @@
+{
+  "item": [
+    {
+      "id": "466c30fa-8d86-4dfe-9fa2-dc3e193a2b12",
+      "name": "Carbon Intensity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "23a69455-005b-4b04-9cb4-d7c66828581f",
+          "name": "Latest carbon intensity",
+          "request": {
+            "name": "Latest carbon intensity",
+            "description": {
+              "content": "Retrieves the last known carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, queryable by zone identifier or by geolocation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carbon-intensity",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8f038314-ea1d-4498-af90-4d607747e88d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"DE\",\n  \"carbonIntensity\": 302,\n  \"datetime\": \"1952-09-02T07:44:27.619Z\",\n  \"updatedAt\": \"2011-09-14T08:16:25.288Z\",\n  \"createdAt\": \"1979-05-25T05:05:18.465Z\",\n  \"emissionFactorType\": \"lifecycle\",\n  \"isEstimated\": true,\n  \"estimationMethod\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b328b1fb-12f1-4b17-9cde-f171b7a61315",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3d0bc7f1-1881-45fb-be70-240ba21cf171",
+          "name": "Carbon intensity history",
+          "request": {
+            "name": "Carbon intensity history",
+            "description": {
+              "content": "Retrieves the last 24 hours of carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, with hourly resolution.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carbon-intensity",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c34bcf71-6995-4320-981b-abbe2a90725e",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"history\": [\n    {\n      \"zone\": \"DE\",\n      \"carbonIntensity\": 302,\n      \"datetime\": \"1952-06-29T13:38:19.436Z\",\n      \"updatedAt\": \"1952-08-16T11:02:24.787Z\",\n      \"createdAt\": \"1970-06-25T13:47:35.995Z\",\n      \"emissionFactorType\": \"lifecycle\",\n      \"isEstimated\": false,\n      \"estimationMethod\": \"string\"\n    },\n    {\n      \"zone\": \"DE\",\n      \"carbonIntensity\": 302,\n      \"datetime\": \"1991-01-04T11:20:10.949Z\",\n      \"updatedAt\": \"1960-05-31T16:10:46.471Z\",\n      \"createdAt\": \"1987-11-29T15:31:08.094Z\",\n      \"emissionFactorType\": \"lifecycle\",\n      \"isEstimated\": true,\n      \"estimationMethod\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cb2675c7-1ef4-4931-ab47-2f3df06bab8f",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7cda402b-32d7-4aa4-9b86-3eba4409e668",
+          "name": "Carbon intensity forecast",
+          "request": {
+            "name": "Carbon intensity forecast",
+            "description": {
+              "content": "Retrieves the forecasted carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, up to 24-72 hours ahead depending on plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carbon-intensity",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddef4b80-4d14-4389-af14-b3aba44614be",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"forecast\": [\n    {\n      \"carbonIntensity\": 7259,\n      \"datetime\": \"1951-02-01T21:03:22.717Z\"\n    },\n    {\n      \"carbonIntensity\": 3070,\n      \"datetime\": \"1980-11-22T06:03:52.626Z\"\n    }\n  ],\n  \"updatedAt\": \"2016-08-13T06:36:32.179Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0814b670-afbd-4861-b933-3bd2e7c787c3",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "88b72055-a372-4ed1-a8af-7789f9d41636",
+    "name": "Electricity Maps Carbon Intensity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

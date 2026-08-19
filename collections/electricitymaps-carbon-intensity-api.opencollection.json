@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps Carbon Intensity API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carbon Intensity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Latest carbon intensity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-intensity/latest",
+            "params": [
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+              }
+            ]
+          },
+          "docs": "Retrieves the last known carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, queryable by zone identifier or by geolocation."
+        },
+        {
+          "info": {
+            "name": "Carbon intensity history",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-intensity/history",
+            "params": [
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+              }
+            ]
+          },
+          "docs": "Retrieves the last 24 hours of carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, with hourly resolution."
+        },
+        {
+          "info": {
+            "name": "Carbon intensity forecast",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-intensity/forecast",
+            "params": [
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+              }
+            ]
+          },
+          "docs": "Retrieves the forecasted carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, up to 24-72 hours ahead depending on plan."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps Carbon Intensity Health API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Health",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "API health",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/health"
+          },
+          "docs": "Returns the operational status of the API. Can be requested without an API key."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

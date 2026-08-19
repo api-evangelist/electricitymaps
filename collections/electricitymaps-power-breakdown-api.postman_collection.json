@@ -1,0 +1,556 @@
+{
+  "item": [
+    {
+      "id": "03b9f726-7725-4f0f-8c18-5b562ecfd206",
+      "name": "Power Breakdown",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28affcb6-f4b3-4ccf-adcb-ff3ced0a759e",
+          "name": "Latest power breakdown",
+          "request": {
+            "name": "Latest power breakdown",
+            "description": {
+              "content": "Retrieves the last known power consumption and production breakdown of a zone, representing the physical origin of electricity broken down by production type, with import/export flows. Queryable by zone or geolocation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "power-breakdown",
+                "latest"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "da1830de-712c-440e-9f66-539a0843776d",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"1951-11-30T08:44:07.168Z\",\n  \"updatedAt\": \"1981-09-20T15:00:46.947Z\",\n  \"createdAt\": \"1961-06-22T04:40:29.241Z\",\n  \"powerConsumptionBreakdown\": {\n    \"nuclear\": 8272.019332502628,\n    \"geothermal\": 7602.8234595557105,\n    \"biomass\": 381.01933497866503,\n    \"coal\": 2417.7741210488302,\n    \"wind\": 2562.8461095477605,\n    \"solar\": 6754.294507313129,\n    \"hydro\": 2056.648007896025,\n    \"gas\": 7618.173195626915,\n    \"oil\": 5746.374544089516,\n    \"unknown\": 4884.930228187278,\n    \"hydro discharge\": 7510.121196565326,\n    \"battery discharge\": 3630.8905278673633\n  },\n  \"powerProductionBreakdown\": {\n    \"nuclear\": 6383.361498713862,\n    \"geothermal\": 4761.164859812449,\n    \"biomass\": 1658.3737950569343,\n    \"coal\": 7503.451375811617,\n    \"wind\": 7376.1987424145855,\n    \"solar\": 3012.9911284457635,\n    \"hydro\": 7282.819639987803,\n    \"gas\": 4679.650115234172,\n    \"oil\": 132.53703831225704,\n    \"unknown\": 9505.11871490492,\n    \"hydro discharge\": 5116.424645352608,\n    \"battery discharge\": 7732.433515617539\n  },\n  \"powerImportBreakdown\": {\n    \"key_0\": 7681.745296702314\n  },\n  \"powerExportBreakdown\": {\n    \"key_0\": 8069.077992532826\n  },\n  \"fossilFreePercentage\": 1582,\n  \"renewablePercentage\": 8298,\n  \"powerConsumptionTotal\": 9855.971879787432,\n  \"powerProductionTotal\": 9259.0917926276,\n  \"powerImportTotal\": 9714.766254433473,\n  \"powerExportTotal\": 1170.314323774113,\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a25f4b1b-de52-4414-ad7f-3183790ec752",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "latest"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a2ceb791-cbcb-4e40-870e-b7b6a1a4ddbe",
+          "name": "Power breakdown history",
+          "request": {
+            "name": "Power breakdown history",
+            "description": {
+              "content": "Retrieves the last 24 hours of power consumption and production breakdown of a zone, with a resolution of 60 minutes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "power-breakdown",
+                "history"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28b38974-a919-441a-9a32-f6f407fb7070",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"history\": [\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"1975-01-21T06:43:38.643Z\",\n      \"updatedAt\": \"1977-06-01T08:08:27.628Z\",\n      \"createdAt\": \"1948-03-05T06:04:00.376Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 7466.695504707088,\n        \"geothermal\": 6469.7227921955055,\n        \"biomass\": 269.1823885900846,\n        \"coal\": 9886.126264712586,\n        \"wind\": 1639.7289295874152,\n        \"solar\": 2082.280459315672,\n        \"hydro\": 5579.242117744102,\n        \"gas\": 9043.699284541875,\n        \"oil\": 8813.28579659604,\n        \"unknown\": 6334.154474334892,\n        \"hydro discharge\": 7817.476684371083,\n        \"battery discharge\": 1095.4953058424667\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 342.1501742939903,\n        \"geothermal\": 255.22449183296604,\n        \"biomass\": 1182.6556237383334,\n        \"coal\": 8948.297856567635,\n        \"wind\": 5071.679425367798,\n        \"solar\": 2256.0221553340075,\n        \"hydro\": 2333.70248094638,\n        \"gas\": 5106.533271603746,\n        \"oil\": 1070.4683004309156,\n        \"unknown\": 1376.627261561678,\n        \"hydro discharge\": 8073.856929948429,\n        \"battery discharge\": 3801.1617418079522\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 9251.829132265959,\n        \"key_1\": 4313.607974858637,\n        \"key_2\": 5629.271838895507,\n        \"key_3\": 2663.797977151502\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 4203.091755738764,\n        \"key_1\": 6426.0185321624695\n      },\n      \"fossilFreePercentage\": 4414,\n      \"renewablePercentage\": 2248,\n      \"powerConsumptionTotal\": 2944.156035670922,\n      \"powerProductionTotal\": 570.8248539824357,\n      \"powerImportTotal\": 8252.633279019248,\n      \"powerExportTotal\": 6014.841502775919,\n      \"isEstimated\": true,\n      \"estimationMethod\": \"string\"\n    },\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"1971-10-15T09:42:00.805Z\",\n      \"updatedAt\": \"2005-08-10T23:31:50.050Z\",\n      \"createdAt\": \"1967-04-08T23:18:45.948Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 9122.652579229878,\n        \"geothermal\": 2201.0778399904207,\n        \"biomass\": 4252.867952006925,\n        \"coal\": 5379.7524309964865,\n        \"wind\": 4984.783074870893,\n        \"solar\": 8764.36601528873,\n        \"hydro\": 4055.2163902308102,\n        \"gas\": 1214.1568458696472,\n        \"oil\": 7537.030725636453,\n        \"unknown\": 1929.471640555287,\n        \"hydro discharge\": 285.9313452992751,\n        \"battery discharge\": 1663.7402681780866\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 3400.128854594423,\n        \"geothermal\": 4880.684971882421,\n        \"biomass\": 6055.275234537543,\n        \"coal\": 3655.6204717036376,\n        \"wind\": 7253.898853067578,\n        \"solar\": 3689.167994020114,\n        \"hydro\": 1284.665099323189,\n        \"gas\": 1386.4373007834718,\n        \"oil\": 2662.5289270865073,\n        \"unknown\": 394.63024233416076,\n        \"hydro discharge\": 8039.985523628552,\n        \"battery discharge\": 3489.732049669909\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 8719.425238775762,\n        \"key_1\": 4818.763741699175\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 2421.3305778082504,\n        \"key_1\": 1225.515281654329,\n        \"key_2\": 7558.003652545985\n      },\n      \"fossilFreePercentage\": 497,\n      \"renewablePercentage\": 398,\n      \"powerConsumptionTotal\": 5673.112953596629,\n      \"powerProductionTotal\": 84.74768094222983,\n      \"powerImportTotal\": 9456.976789432707,\n      \"powerExportTotal\": 1572.361310466559,\n      \"isEstimated\": false,\n      \"estimationMethod\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21ee995c-435e-4167-89e5-281e11e911f1",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "history"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c8507282-b19d-4bb2-bd5b-cca5de19870a",
+          "name": "Power breakdown forecast",
+          "request": {
+            "name": "Power breakdown forecast",
+            "description": {
+              "content": "Retrieves the forecasted power production breakdown of a zone, up to 24-72 hours ahead depending on plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "power-breakdown",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "62253f5e-fd14-4777-abe2-4a5262c03b7c",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"forecast\": [\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"2006-07-11T10:21:37.763Z\",\n      \"updatedAt\": \"1949-04-07T06:59:41.141Z\",\n      \"createdAt\": \"2024-08-18T08:11:33.932Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 2545.3808055165605,\n        \"geothermal\": 3545.7484876659128,\n        \"biomass\": 8373.314745076503,\n        \"coal\": 5848.1658927735025,\n        \"wind\": 953.5664754801699,\n        \"solar\": 4296.694147612511,\n        \"hydro\": 1061.6706256422526,\n        \"gas\": 8025.204735643908,\n        \"oil\": 7084.896936936473,\n        \"unknown\": 2470.680526521867,\n        \"hydro discharge\": 209.9819371194178,\n        \"battery discharge\": 4339.318281613882\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 5056.354948543856,\n        \"geothermal\": 1576.3489793739238,\n        \"biomass\": 1437.6261901950938,\n        \"coal\": 2540.958886228911,\n        \"wind\": 8034.762532743685,\n        \"solar\": 7481.299270311857,\n        \"hydro\": 3037.2459478274204,\n        \"gas\": 2408.712244326707,\n        \"oil\": 8374.158314044993,\n        \"unknown\": 2441.4925478911355,\n        \"hydro discharge\": 2173.012928156124,\n        \"battery discharge\": 5393.807691691775\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 3913.358550732414,\n        \"key_1\": 6806.446554802895\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 4801.0434258412115\n      },\n      \"fossilFreePercentage\": 7907,\n      \"renewablePercentage\": 6998,\n      \"powerConsumptionTotal\": 301.3314304813941,\n      \"powerProductionTotal\": 612.8691045249191,\n      \"powerImportTotal\": 6717.184341962934,\n      \"powerExportTotal\": 4649.477878249825,\n      \"isEstimated\": false,\n      \"estimationMethod\": \"string\"\n    },\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"1973-01-24T01:09:01.560Z\",\n      \"updatedAt\": \"1947-05-30T22:12:26.423Z\",\n      \"createdAt\": \"1983-02-27T09:13:53.808Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 8034.4746401197435,\n        \"geothermal\": 8134.26306668041,\n        \"biomass\": 1727.9874734240032,\n        \"coal\": 4662.86442736938,\n        \"wind\": 6898.968747135902,\n        \"solar\": 4603.868740000679,\n        \"hydro\": 8984.591030279707,\n        \"gas\": 8171.735905879382,\n        \"oil\": 2552.9776413352133,\n        \"unknown\": 4108.406673458302,\n        \"hydro discharge\": 8514.835988991626,\n        \"battery discharge\": 2551.595802046499\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 1614.2320079583205,\n        \"geothermal\": 7000.842417867841,\n        \"biomass\": 9240.356779234771,\n        \"coal\": 974.4050377722513,\n        \"wind\": 833.3950821870595,\n        \"solar\": 155.48448757005008,\n        \"hydro\": 5111.098282834736,\n        \"gas\": 4848.537367868194,\n        \"oil\": 8399.620873468057,\n        \"unknown\": 5104.918544447229,\n        \"hydro discharge\": 4729.479100873377,\n        \"battery discharge\": 6262.721180506139\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 8851.003261105623\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 5873.958255460962\n      },\n      \"fossilFreePercentage\": 1497,\n      \"renewablePercentage\": 8826,\n      \"powerConsumptionTotal\": 8778.566306072536,\n      \"powerProductionTotal\": 7198.170571876025,\n      \"powerImportTotal\": 2959.354822792001,\n      \"powerExportTotal\": 5678.513961934436,\n      \"isEstimated\": true,\n      \"estimationMethod\": \"string\"\n    }\n  ],\n  \"updatedAt\": \"1974-04-21T05:41:39.265Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "653c4f90-e1f4-4bee-b4cb-cffceaeef8e8",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "35e77ecd-749f-4bd6-bf53-9a129b0c59ec",
+    "name": "Electricity Maps Carbon Intensity Power Breakdown API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

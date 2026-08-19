@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps CarbonIntensity Pricing API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pricing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get day-ahead price",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/day-ahead-price/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get day-ahead price"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

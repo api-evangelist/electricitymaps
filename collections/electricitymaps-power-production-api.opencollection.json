@@ -1,0 +1,57 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps Carbon Intensity Power Production API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Power Production",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Latest power production breakdown",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/power-production-breakdown/latest",
+            "params": [
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+              }
+            ]
+          },
+          "docs": "Retrieves the last known physical power production breakdown of a zone, in megawatts per production type, before flow tracing."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

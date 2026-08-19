@@ -1,0 +1,387 @@
+{
+  "item": [
+    {
+      "id": "5543047b-4de6-489c-bcd4-3e426ed654ac",
+      "name": "Forecast",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5b0064ee-f55f-444e-9386-2923ab0dbfe3",
+          "name": "Carbon intensity forecast",
+          "request": {
+            "name": "Carbon intensity forecast",
+            "description": {
+              "content": "Retrieves the forecasted carbon intensity (in gCO2eq/kWh) of electricity consumed in a zone, up to 24-72 hours ahead depending on plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "carbon-intensity",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f80b6a55-84b8-4ea9-b0b9-708b542dc171",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"forecast\": [\n    {\n      \"carbonIntensity\": 8829,\n      \"datetime\": \"1957-03-05T04:03:20.596Z\"\n    },\n    {\n      \"carbonIntensity\": 7545,\n      \"datetime\": \"1990-09-16T10:06:30.669Z\"\n    }\n  ],\n  \"updatedAt\": \"2016-11-14T10:37:16.653Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b40525f7-f535-4621-ad7b-bb7402793782",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "carbon-intensity",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a174baae-4b77-43ae-a5b0-b6d1fbd4d3f1",
+          "name": "Power breakdown forecast",
+          "request": {
+            "name": "Power breakdown forecast",
+            "description": {
+              "content": "Retrieves the forecasted power production breakdown of a zone, up to 24-72 hours ahead depending on plan.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "power-breakdown",
+                "forecast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon."
+                },
+                {
+                  "disabled": false,
+                  "key": "lat",
+                  "value": "<float>",
+                  "description": "Latitude of the location to resolve to a zone. Used with lon as an alternative to zone."
+                },
+                {
+                  "disabled": false,
+                  "key": "lon",
+                  "value": "<float>",
+                  "description": "Longitude of the location to resolve to a zone. Used with lat as an alternative to zone."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "28c7f54e-ddda-4613-b82a-76e6ce1e94eb",
+              "name": "OK",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"forecast\": [\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"2017-06-02T11:58:52.165Z\",\n      \"updatedAt\": \"1979-07-12T07:44:09.963Z\",\n      \"createdAt\": \"1968-10-14T00:27:39.901Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 6877.177241672225,\n        \"geothermal\": 8054.465711657031,\n        \"biomass\": 5355.778618924422,\n        \"coal\": 4735.188512476457,\n        \"wind\": 4893.15757354578,\n        \"solar\": 2206.4704932383884,\n        \"hydro\": 2655.0485033839964,\n        \"gas\": 3659.3196988114864,\n        \"oil\": 190.83644186897453,\n        \"unknown\": 1916.2288694612373,\n        \"hydro discharge\": 2912.337320652453,\n        \"battery discharge\": 2822.8041114797884\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 2336.892212786339,\n        \"geothermal\": 8235.88577179356,\n        \"biomass\": 6380.750639045371,\n        \"coal\": 3959.2766681880444,\n        \"wind\": 8930.628071955309,\n        \"solar\": 5053.747375892041,\n        \"hydro\": 3286.739327731878,\n        \"gas\": 7173.929749061069,\n        \"oil\": 8884.127835866535,\n        \"unknown\": 7546.289888717683,\n        \"hydro discharge\": 1237.6062980616975,\n        \"battery discharge\": 6263.995524165657\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 5156.264504313326,\n        \"key_1\": 5309.724482905599,\n        \"key_2\": 6377.472650591008\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 7349.415885790406,\n        \"key_1\": 4925.950632856085\n      },\n      \"fossilFreePercentage\": 8108,\n      \"renewablePercentage\": 5175,\n      \"powerConsumptionTotal\": 8882.774965423405,\n      \"powerProductionTotal\": 4199.253512174684,\n      \"powerImportTotal\": 8352.513391522514,\n      \"powerExportTotal\": 2126.427349163449,\n      \"isEstimated\": true,\n      \"estimationMethod\": \"string\"\n    },\n    {\n      \"zone\": \"string\",\n      \"datetime\": \"2019-07-23T00:20:04.805Z\",\n      \"updatedAt\": \"1956-10-26T02:58:46.761Z\",\n      \"createdAt\": \"1954-07-15T19:44:48.660Z\",\n      \"powerConsumptionBreakdown\": {\n        \"nuclear\": 5966.5977867463935,\n        \"geothermal\": 9786.916680605222,\n        \"biomass\": 4310.921712137851,\n        \"coal\": 2066.7170408519264,\n        \"wind\": 5564.310941601414,\n        \"solar\": 954.1767246891831,\n        \"hydro\": 8311.211063086608,\n        \"gas\": 1403.4896114553076,\n        \"oil\": 5305.706695654756,\n        \"unknown\": 2593.0775168905416,\n        \"hydro discharge\": 7938.368195538249,\n        \"battery discharge\": 9653.440010245264\n      },\n      \"powerProductionBreakdown\": {\n        \"nuclear\": 7021.011988951592,\n        \"geothermal\": 2306.313105696428,\n        \"biomass\": 1071.4345015939198,\n        \"coal\": 7648.392577010952,\n        \"wind\": 3443.864226317893,\n        \"solar\": 8861.69812665434,\n        \"hydro\": 4340.129786742143,\n        \"gas\": 2963.620921706187,\n        \"oil\": 5291.001177372129,\n        \"unknown\": 6250.896611375949,\n        \"hydro discharge\": 3348.2120809431503,\n        \"battery discharge\": 2246.5432487432067\n      },\n      \"powerImportBreakdown\": {\n        \"key_0\": 2525.2162917454757,\n        \"key_1\": 9084.369471105469\n      },\n      \"powerExportBreakdown\": {\n        \"key_0\": 1296.6505989890609\n      },\n      \"fossilFreePercentage\": 4316,\n      \"renewablePercentage\": 2954,\n      \"powerConsumptionTotal\": 4196.709671122576,\n      \"powerProductionTotal\": 7929.254615365829,\n      \"powerImportTotal\": 400.9423205748175,\n      \"powerExportTotal\": 4315.092700404991,\n      \"isEstimated\": false,\n      \"estimationMethod\": \"string\"\n    }\n  ],\n  \"updatedAt\": \"1984-02-09T09:58:45.754Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99b4f4b7-2974-4ce4-b41f-83a8497b0307",
+              "name": "Missing or invalid auth-token.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "power-breakdown",
+                    "forecast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "lat",
+                      "value": "<float>"
+                    },
+                    {
+                      "key": "lon",
+                      "value": "<float>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"status\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org/v3",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "929cbc7f-a20d-431b-a255-1c6bc96044f9",
+    "name": "Electricity Maps Carbon Intensity Forecast API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

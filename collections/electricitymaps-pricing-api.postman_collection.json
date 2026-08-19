@@ -1,0 +1,156 @@
+{
+  "item": [
+    {
+      "id": "d41cd892-d637-4f37-a630-96c8b300e6b8",
+      "name": "Pricing",
+      "description": {
+        "content": "Day-ahead electricity pricing.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccfab827-e1fc-4b6c-b25a-24a701033c2f",
+          "name": "Get day-ahead price",
+          "request": {
+            "name": "Get day-ahead price",
+            "description": {},
+            "url": {
+              "path": [
+                "v3",
+                "day-ahead-price",
+                ":temporality"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "zone",
+                  "value": "<string>",
+                  "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "temporality",
+                  "description": "(Required) Time horizon of the signal."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "38c83782-6245-450e-ae0f-deaa96994057",
+              "name": "Day-ahead price signal",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "v3",
+                    "day-ahead-price",
+                    ":temporality"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "zone",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "temporality",
+                      "description": "(Required) Time horizon of the signal."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "auth-token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"zone\": \"string\",\n  \"datetime\": \"1975-04-12T21:22:02.975Z\",\n  \"updatedAt\": \"1994-11-06T09:01:30.002Z\",\n  \"isEstimated\": false,\n  \"estimationMethod\": \"string\",\n  \"temporalGranularity\": \"string\",\n  \"emissionFactorType\": \"string\",\n  \"history\": [\n    {\n      \"key_0\": 7667,\n      \"key_1\": true\n    },\n    {\n      \"key_0\": true\n    }\n  ],\n  \"forecast\": [\n    {\n      \"key_0\": 1612\n    },\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 2529.2730816501407\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.electricitymap.org",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "auth-token"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7786c07e-24b7-41a1-9256-d7d2d960af1c",
+    "name": "Electricity Maps CarbonIntensity Pricing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Electricity Maps API delivers real-time, historical, and forecasted electricity grid signals worldwide, including carbon intensity, power breakdown by source, renewable and carbon-free percentages, electricity flows, total and net load, and day-ahead pricing. Each signal is available in three temporality variants (latest, past, forecast) and can be queried by zone identifier, geographic coordinates, or data center provider/region.\n\nContact Support:\n Name: Electricity Maps Support",
+      "type": "text/plain"
+    }
+  }
+}

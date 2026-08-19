@@ -1,0 +1,106 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Electricity Maps CarbonIntensity API",
+    "version": "3.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "auth-token",
+      "value": "{{auth-token}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CarbonIntensity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get carbon intensity signal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/carbon-intensity/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              },
+              {
+                "name": "lon",
+                "value": "",
+                "type": "query",
+                "description": "Longitude (used in place of zone)."
+              },
+              {
+                "name": "lat",
+                "value": "",
+                "type": "query",
+                "description": "Latitude (used in place of zone)."
+              },
+              {
+                "name": "temporalGranularity",
+                "value": "",
+                "type": "query",
+                "description": "Temporal aggregation of the response."
+              },
+              {
+                "name": "emissionFactorType",
+                "value": "",
+                "type": "query",
+                "description": "Emission factor methodology."
+              },
+              {
+                "name": "disableEstimations",
+                "value": "",
+                "type": "query",
+                "description": "Exclude estimated data points."
+              }
+            ]
+          },
+          "docs": "Returns carbon intensity in gCO2eq/kWh for the requested zone and temporality."
+        },
+        {
+          "info": {
+            "name": "Get fossil-only carbon intensity",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.electricitymap.org/v3/fossil-only-carbon-intensity/:temporality",
+            "params": [
+              {
+                "name": "temporality",
+                "value": "",
+                "type": "path",
+                "description": "Time horizon of the signal."
+              },
+              {
+                "name": "zone",
+                "value": "",
+                "type": "query",
+                "description": "Zone identifier (e.g., SE, DE, US-CAL-CISO)."
+              }
+            ]
+          },
+          "docs": "Get fossil-only carbon intensity"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
