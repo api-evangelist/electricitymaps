@@ -184,6 +184,56 @@ apis:
     url: https://portal.electricitymaps.com/docs/api#zones
   - type: APIReference
     url: https://portal.electricitymaps.com/docs/api#forecast
+- aid: electricitymaps:electricitymaps-carbonintensity-api
+  name: Electricity Maps Carbon Intensity API
+  description: Carbon intensity (gCO2eq/kWh) signals.
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  tags:
+  - CarbonIntensity
+  properties:
+  - type: OpenAPI
+    url: openapi/electricitymaps-carbonintensity-api-openapi.yml
+- aid: electricitymaps:electricitymaps-electricitymix-api
+  name: Electricity Maps Electricity Mix API
+  description: Power production and consumption breakdown by source.
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  tags:
+  - ElectricityMix
+  properties:
+  - type: OpenAPI
+    url: openapi/electricitymaps-electricitymix-api-openapi.yml
+- aid: electricitymaps:electricitymaps-gridmetrics-api
+  name: Electricity Maps Grid Metrics API
+  description: Total load, net load, and electricity flows between zones.
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  tags:
+  - GridMetrics
+  properties:
+  - type: OpenAPI
+    url: openapi/electricitymaps-gridmetrics-api-openapi.yml
+- aid: electricitymaps:electricitymaps-pricing-api
+  name: Electricity Maps Pricing API
+  description: Day-ahead electricity pricing.
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  tags:
+  - Pricing
+  properties:
+  - type: OpenAPI
+    url: openapi/electricitymaps-pricing-api-openapi.yml
+- aid: electricitymaps:electricitymaps-renewables-api
+  name: Electricity Maps Renewables API
+  description: Renewable and carbon-free percentage signals.
+  humanURL: https://portal.electricitymaps.com/docs/api
+  baseURL: https://api.electricitymap.org/v3
+  tags:
+  - Renewables
+  properties:
+  - type: OpenAPI
+    url: openapi/electricitymaps-renewables-api-openapi.yml
 common:
 - type: AgenticAccess
   url: agentic-access/electricitymaps-agentic-access.yml
