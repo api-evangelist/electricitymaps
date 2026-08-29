@@ -6,6 +6,18 @@ description: Electricity Maps provides electricity grid data - carbon intensity 
   breakdown - for 200+ zones worldwide, in real time, as historical series, and as 24-72 hour forecasts.
   The REST API serves the same data behind the live electricity map at app.electricitymap.org, authenticated
   with an auth-token header.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
