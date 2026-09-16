@@ -1,15 +1,20 @@
-generated: '2026-07-15'
+generated: '2026-09-16'
 method: generated
-source: openapi/electricitymaps-openapi.yml
+source: openapi/electricitymaps-carbon-intensity-api-openapi.yml, openapi/electricitymaps-electricitymix-api-openapi.yml,
+  openapi/electricitymaps-forecast-api-openapi.yml, openapi/electricitymaps-gridmetrics-api-openapi.yml,
+  openapi/electricitymaps-health-api-openapi.yml, openapi/electricitymaps-power-breakdown-api-openapi.yml,
+  openapi/electricitymaps-power-consumption-api-openapi.yml, openapi/electricitymaps-power-production-api-openapi.yml,
+  openapi/electricitymaps-pricing-api-openapi.yml, openapi/electricitymaps-renewables-api-openapi.yml,
+  openapi/electricitymaps-zones-api-openapi.yml
 description: Recommended x-agentic-access execution contracts, classified heuristically from
   the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
   audience per deployment. See research/curity/agentic-governance/.
 summary:
-  operations: 10
+  operations: 21
   by_action_class:
-    connected: 10
+    connected: 21
   by_consequence:
-    read: 10
+    read: 21
   human_in_the_loop_required: 0
 operations:
 - path: /carbon-intensity/latest
@@ -35,6 +40,96 @@ operations:
 - path: /carbon-intensity/forecast
   method: get
   operationId: getCarbonIntensityForecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/carbon-intensity/{temporality}
+  method: get
+  operationId: getCarbonIntensity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/fossil-only-carbon-intensity/{temporality}
+  method: get
+  operationId: getFossilOnlyCarbonIntensity
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/electricity-mix/{temporality}
+  method: get
+  operationId: getElectricityMix
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /carbon-intensity/forecast
+  method: get
+  operationId: getCarbonIntensityForecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /power-breakdown/forecast
+  method: get
+  operationId: getPowerBreakdownForecast
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/total-load/{temporality}
+  method: get
+  operationId: getTotalLoad
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/net-load/{temporality}
+  method: get
+  operationId: getNetLoad
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/electricity-flows/{temporality}
+  method: get
+  operationId: getElectricityFlows
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /health
+  method: get
+  operationId: getHealth
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -92,9 +187,9 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /zones
+- path: /v3/day-ahead-price/{temporality}
   method: get
-  operationId: getZones
+  operationId: getDayAheadPrice
   x-agentic-access:
     action-class: connected
     consequence: read
@@ -102,9 +197,29 @@ operations:
     token:
       max-ttl: 3600
     audit: none
-- path: /health
+- path: /v3/renewable-percentage/{temporality}
   method: get
-  operationId: getHealth
+  operationId: getRenewablePercentage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /v3/carbon-free-percentage/{temporality}
+  method: get
+  operationId: getCarbonFreePercentage
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /zones
+  method: get
+  operationId: getZones
   x-agentic-access:
     action-class: connected
     consequence: read
