@@ -196,18 +196,6 @@ apis:
     url: https://portal.electricitymaps.com/docs/api#zones
   - type: APIReference
     url: https://portal.electricitymaps.com/docs/api#forecast
-- aid: electricitymaps:electricitymaps-carbonintensity-api
-  name: Electricity Maps Carbon Intensity API
-  description: Carbon intensity (gCO2eq/kWh) signals.
-  humanURL: https://portal.electricitymaps.com/docs/api
-  baseURL: https://api.electricitymap.org/v3
-  tags:
-  - Carbon Intensity
-  tags_raw:
-  - CarbonIntensity
-  properties:
-  - type: OpenAPI
-    url: openapi/electricitymaps-carbonintensity-api-openapi.yml
 - aid: electricitymaps:electricitymaps-electricitymix-api
   name: Electricity Maps Electricity Mix API
   description: Power production and consumption breakdown by source.
