@@ -1,12 +1,12 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Electricity Maps Carbon Intensity API
-  description: The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.
-  termsOfService: https://www.electricitymaps.com/legal-notice
+  title: Electricitymaps Carbon Intensity API
+  version: '3.0'
   contact:
     name: Electricity Maps Support
     url: https://www.electricitymaps.com
-  version: '3.0'
+  termsOfService: https://www.electricitymaps.com/legal-notice
+  description: 'Operations tagged Carbon Intensity across 2 of this provider''s published API definitions: electricitymaps-openapi.yml, electricitymaps-carbon-intensity-api-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.electricitymap.org/v3
 security:
@@ -34,6 +34,8 @@ paths:
                 $ref: '#/components/schemas/CarbonIntensity'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    servers:
+    - url: https://api.electricitymap.org/v3
   /carbon-intensity/history:
     get:
       operationId: getCarbonIntensityHistory
@@ -54,6 +56,8 @@ paths:
                 $ref: '#/components/schemas/CarbonIntensityHistory'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    servers:
+    - url: https://api.electricitymap.org/v3
   /carbon-intensity/forecast:
     get:
       operationId: getCarbonIntensityForecast
@@ -74,26 +78,144 @@ paths:
                 $ref: '#/components/schemas/CarbonIntensityForecast'
         '401':
           $ref: '#/components/responses/Unauthorized'
+    servers:
+    - url: https://api.electricitymap.org/v3
+  /v3/carbon-intensity/{temporality}:
+    get:
+      operationId: getCarbonIntensity
+      summary: Get carbon intensity signal
+      description: Returns carbon intensity in gCO2eq/kWh for the requested zone and temporality.
+      tags:
+      - Carbon Intensity
+      parameters:
+      - $ref: '#/components/parameters/Temporality'
+      - $ref: '#/components/parameters/Zone'
+      - $ref: '#/components/parameters/Lon'
+      - $ref: '#/components/parameters/Lat'
+      - $ref: '#/components/parameters/TemporalGranularity'
+      - $ref: '#/components/parameters/EmissionFactorType'
+      - $ref: '#/components/parameters/DisableEstimations'
+      responses:
+        '200':
+          description: Carbon intensity signal
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalResponse'
+    servers:
+    - url: https://api.electricitymap.org/v3
+  /v3/fossil-only-carbon-intensity/{temporality}:
+    get:
+      operationId: getFossilOnlyCarbonIntensity
+      summary: Get fossil-only carbon intensity
+      tags:
+      - Carbon Intensity
+      parameters:
+      - $ref: '#/components/parameters/Temporality'
+      - $ref: '#/components/parameters/Zone'
+      responses:
+        '200':
+          description: Signal response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignalResponse'
+    servers:
+    - url: https://api.electricitymap.org/v3
 components:
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    Lat:
+      name: lat
+      in: query
+      description: Latitude (used in place of zone).
+      schema:
+        type: number
+    TemporalGranularity:
+      name: temporalGranularity
+      in: query
+      description: Temporal aggregation of the response.
+      schema:
+        type: string
+        enum:
+        - 5_minutes
+        - 15_minutes
+        - hourly
+        - daily
+        - monthly
+        - quarterly
+        - yearly
+        default: hourly
+    Lon:
+      name: lon
+      in: query
+      description: Longitude (used in place of zone).
+      schema:
+        type: number
+    EmissionFactorType:
+      name: emissionFactorType
+      in: query
+      description: Emission factor methodology.
+      schema:
+        type: string
+        enum:
+        - lifecycle
+        - direct
+        default: lifecycle
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
+    DisableEstimations:
+      name: disableEstimations
+      in: query
+      description: Exclude estimated data points.
+      schema:
+        type: boolean
+        default: false
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    CarbonIntensityForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            type: object
-            properties:
-              carbonIntensity:
-                type: integer
-              datetime:
-                type: string
-                format: date-time
-        updatedAt:
-          type: string
-          format: date-time
     CarbonIntensity:
       type: object
       properties:
@@ -119,8 +241,16 @@ components:
         isEstimated:
           type: boolean
         estimationMethod:
+          type:
+          - string
+          - 'null'
+    Error:
+      type: object
+      properties:
+        message:
           type: string
-          nullable: true
+        status:
+          type: string
     CarbonIntensityHistory:
       type: object
       properties:
@@ -130,47 +260,63 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CarbonIntensity'
-    Error:
+    CarbonIntensityForecast:
       type: object
       properties:
-        message:
+        zone:
           type: string
-        status:
+        forecast:
+          type: array
+          items:
+            type: object
+            properties:
+              carbonIntensity:
+                type: integer
+              datetime:
+                type: string
+                format: date-time
+        updatedAt:
           type: string
-  parameters:
-    lat:
-      name: lat
-      in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    lon:
-      name: lon
-      in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
-      required: false
-      schema:
-        type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid auth-token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+          format: date-time
+    SignalResponse:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        isEstimated:
+          type: boolean
+        estimationMethod:
+          type: string
+          nullable: true
+        temporalGranularity:
+          type: string
+        emissionFactorType:
+          type: string
+        history:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        forecast:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
   securitySchemes:
     authToken:
       type: apiKey
       in: header
       name: auth-token
       description: API key issued from the Electricity Maps portal, sent in the auth-token header.
+    basicAuth:
+      type: http
+      scheme: basic
+x-refined-from:
+- electricitymaps-openapi.yml
+- electricitymaps-carbon-intensity-api-openapi.yml

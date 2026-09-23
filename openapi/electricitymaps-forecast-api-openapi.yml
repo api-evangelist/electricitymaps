@@ -1,6 +1,6 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Electricity Maps Carbon Intensity Forecast API
+  title: Electricity Maps Forecast API
   description: The Electricity Maps API serves electricity grid carbon intensity and power production/consumption breakdown data for 200+ zones worldwide, in real time, as 24-hour history, and as 24-72 hour forecasts. It is the same data behind the live map at app.electricitymap.org. All data endpoints require an API key passed in the auth-token header; the zones and health endpoints can be called without a key.
   termsOfService: https://www.electricitymaps.com/legal-notice
   contact:
@@ -55,84 +55,31 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
   schemas:
-    CarbonIntensityForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            type: object
-            properties:
-              carbonIntensity:
-                type: integer
-              datetime:
-                type: string
-                format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    SourceBreakdown:
-      type: object
-      description: Power in MW per production type. Values may be null when unknown.
-      properties:
-        nuclear:
-          type: number
-          nullable: true
-        geothermal:
-          type: number
-          nullable: true
-        biomass:
-          type: number
-          nullable: true
-        coal:
-          type: number
-          nullable: true
-        wind:
-          type: number
-          nullable: true
-        solar:
-          type: number
-          nullable: true
-        hydro:
-          type: number
-          nullable: true
-        gas:
-          type: number
-          nullable: true
-        oil:
-          type: number
-          nullable: true
-        unknown:
-          type: number
-          nullable: true
-        hydro discharge:
-          type: number
-          nullable: true
-        battery discharge:
-          type: number
-          nullable: true
-    PowerBreakdownForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            $ref: '#/components/schemas/PowerBreakdown'
-        updatedAt:
-          type: string
-          format: date-time
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        status:
-          type: string
     PowerBreakdown:
       type: object
       properties:
@@ -154,13 +101,15 @@ components:
         powerImportBreakdown:
           type: object
           additionalProperties:
-            type: number
-            nullable: true
+            type:
+            - number
+            - 'null'
         powerExportBreakdown:
           type: object
           additionalProperties:
-            type: number
-            nullable: true
+            type:
+            - number
+            - 'null'
         fossilFreePercentage:
           type: integer
         renewablePercentage:
@@ -176,32 +125,98 @@ components:
         isEstimated:
           type: boolean
         estimationMethod:
+          type:
+          - string
+          - 'null'
+    PowerBreakdownForecast:
+      type: object
+      properties:
+        zone:
           type: string
-          nullable: true
-  parameters:
-    lat:
-      name: lat
-      in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    lon:
-      name: lon
-      in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
-      required: false
-      schema:
-        type: string
+        forecast:
+          type: array
+          items:
+            $ref: '#/components/schemas/PowerBreakdown'
+        updatedAt:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
+    SourceBreakdown:
+      type: object
+      description: Power in MW per production type. Values may be null when unknown.
+      properties:
+        nuclear:
+          type:
+          - number
+          - 'null'
+        geothermal:
+          type:
+          - number
+          - 'null'
+        biomass:
+          type:
+          - number
+          - 'null'
+        coal:
+          type:
+          - number
+          - 'null'
+        wind:
+          type:
+          - number
+          - 'null'
+        solar:
+          type:
+          - number
+          - 'null'
+        hydro:
+          type:
+          - number
+          - 'null'
+        gas:
+          type:
+          - number
+          - 'null'
+        oil:
+          type:
+          - number
+          - 'null'
+        unknown:
+          type:
+          - number
+          - 'null'
+        hydro discharge:
+          type:
+          - number
+          - 'null'
+        battery discharge:
+          type:
+          - number
+          - 'null'
+    CarbonIntensityForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            type: object
+            properties:
+              carbonIntensity:
+                type: integer
+              datetime:
+                type: string
+                format: date-time
+        updatedAt:
+          type: string
+          format: date-time
   responses:
     Unauthorized:
       description: Missing or invalid auth-token.

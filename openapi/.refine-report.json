@@ -1,13 +1,12 @@
 {
   "provider": "electricitymaps",
   "sources": [
+    "_original/electricitymaps-openapi.yml",
     "electricitymaps-carbon-intensity-api-openapi.yml",
-    "electricitymaps-forecast-api-openapi.yml",
-    "electricitymaps-health-api-openapi.yml",
-    "electricitymaps-power-breakdown-api-openapi.yml",
-    "electricitymaps-power-consumption-api-openapi.yml",
-    "electricitymaps-power-production-api-openapi.yml",
-    "electricitymaps-zones-api-openapi.yml"
+    "electricitymaps-electricitymix-api-openapi.yml",
+    "electricitymaps-gridmetrics-api-openapi.yml",
+    "electricitymaps-pricing-api-openapi.yml",
+    "electricitymaps-renewables-api-openapi.yml"
   ],
   "outputs": [
     "electricitymaps-carbon-intensity-api-openapi.yml",
@@ -16,11 +15,40 @@
     "electricitymaps-power-breakdown-api-openapi.yml",
     "electricitymaps-power-consumption-api-openapi.yml",
     "electricitymaps-power-production-api-openapi.yml",
-    "electricitymaps-zones-api-openapi.yml"
+    "electricitymaps-zones-api-openapi.yml",
+    "electricitymaps-electricitymix-api-openapi.yml",
+    "electricitymaps-gridmetrics-api-openapi.yml",
+    "electricitymaps-pricing-api-openapi.yml",
+    "electricitymaps-renewables-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
-  "warnings": [],
-  "notes": [],
-  "skipped": []
+  "warnings": [
+    "electricitymaps-carbon-intensity-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v3/carbon-intensity/{temporality} get, /v3/fossil-only-carbon-intensity/{temporality} get); its other 3 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "electricitymaps-electricitymix-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v3/electricity-mix/{temporality} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "electricitymaps-gridmetrics-api-openapi.yml: previously refined output kept for 3 operation(s) no archived document covers (e.g. /v3/electricity-flows/{temporality} get, /v3/net-load/{temporality} get, /v3/total-load/{temporality} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "electricitymaps-pricing-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /v3/day-ahead-price/{temporality} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "electricitymaps-renewables-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /v3/carbon-free-percentage/{temporality} get, /v3/renewable-percentage/{temporality} get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+  ],
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "electricitymaps-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "electricitymaps-openapi.yml: declared missing tag: Carbon Intensity",
+    "electricitymaps-openapi.yml: declared missing tag: Forecast",
+    "electricitymaps-openapi.yml: declared missing tag: Health",
+    "electricitymaps-openapi.yml: declared missing tag: Power Breakdown",
+    "electricitymaps-openapi.yml: declared missing tag: Power Consumption",
+    "electricitymaps-openapi.yml: declared missing tag: Power Production",
+    "electricitymaps-openapi.yml: declared missing tag: Zones",
+    "tag 'Carbon Intensity' spans 2 source specs (electricitymaps-openapi.yml, electricitymaps-carbon-intensity-api-openapi.yml): per-path servers applied",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "electricitymaps-forecast-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "electricitymaps-health-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "electricitymaps-power-breakdown-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "electricitymaps-power-consumption-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "electricitymaps-power-production-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "electricitymaps-zones-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
