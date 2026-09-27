@@ -55,6 +55,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     lon:
       name: lon
@@ -80,73 +87,6 @@ components:
         type: number
         format: float
   schemas:
-    PowerBreakdown:
-      type: object
-      properties:
-        zone:
-          type: string
-        datetime:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        createdAt:
-          type: string
-          format: date-time
-        powerConsumptionBreakdown:
-          $ref: '#/components/schemas/SourceBreakdown'
-        powerProductionBreakdown:
-          $ref: '#/components/schemas/SourceBreakdown'
-        powerImportBreakdown:
-          type: object
-          additionalProperties:
-            type:
-            - number
-            - 'null'
-        powerExportBreakdown:
-          type: object
-          additionalProperties:
-            type:
-            - number
-            - 'null'
-        fossilFreePercentage:
-          type: integer
-        renewablePercentage:
-          type: integer
-        powerConsumptionTotal:
-          type: number
-        powerProductionTotal:
-          type: number
-        powerImportTotal:
-          type: number
-        powerExportTotal:
-          type: number
-        isEstimated:
-          type: boolean
-        estimationMethod:
-          type:
-          - string
-          - 'null'
-    PowerBreakdownForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            $ref: '#/components/schemas/PowerBreakdown'
-        updatedAt:
-          type: string
-          format: date-time
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        status:
-          type: string
     SourceBreakdown:
       type: object
       description: Power in MW per production type. Values may be null when unknown.
@@ -199,6 +139,73 @@ components:
           type:
           - number
           - 'null'
+    PowerBreakdownForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            $ref: '#/components/schemas/PowerBreakdown'
+        updatedAt:
+          type: string
+          format: date-time
+    PowerBreakdown:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdAt:
+          type: string
+          format: date-time
+        powerConsumptionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerProductionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerImportBreakdown:
+          type: object
+          additionalProperties:
+            type:
+            - number
+            - 'null'
+        powerExportBreakdown:
+          type: object
+          additionalProperties:
+            type:
+            - number
+            - 'null'
+        fossilFreePercentage:
+          type: integer
+        renewablePercentage:
+          type: integer
+        powerConsumptionTotal:
+          type: number
+        powerProductionTotal:
+          type: number
+        powerImportTotal:
+          type: number
+        powerExportTotal:
+          type: number
+        isEstimated:
+          type: boolean
+        estimationMethod:
+          type:
+          - string
+          - 'null'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
     CarbonIntensityForecast:
       type: object
       properties:
@@ -217,13 +224,6 @@ components:
         updatedAt:
           type: string
           format: date-time
-  responses:
-    Unauthorized:
-      description: Missing or invalid auth-token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     authToken:
       type: apiKey

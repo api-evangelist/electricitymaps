@@ -35,6 +35,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     lon:
       name: lon
@@ -59,33 +66,7 @@ components:
       schema:
         type: number
         format: float
-  responses:
-    Unauthorized:
-      description: Missing or invalid auth-token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    PowerProductionBreakdown:
-      type: object
-      properties:
-        zone:
-          type: string
-        datetime:
-          type: string
-          format: date-time
-        powerProductionBreakdown:
-          $ref: '#/components/schemas/SourceBreakdown'
-        powerProductionTotal:
-          type: number
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        status:
-          type: string
     SourceBreakdown:
       type: object
       description: Power in MW per production type. Values may be null when unknown.
@@ -138,6 +119,25 @@ components:
           type:
           - number
           - 'null'
+    PowerProductionBreakdown:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        powerProductionBreakdown:
+          $ref: '#/components/schemas/SourceBreakdown'
+        powerProductionTotal:
+          type: number
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
   securitySchemes:
     authToken:
       type: apiKey

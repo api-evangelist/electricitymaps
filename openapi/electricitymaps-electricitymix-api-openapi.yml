@@ -38,37 +38,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/SignalResponse'
 components:
-  schemas:
-    SignalResponse:
-      type: object
-      properties:
-        zone:
-          type: string
-        datetime:
-          type: string
-          format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-        isEstimated:
-          type: boolean
-        estimationMethod:
-          type: string
-          nullable: true
-        temporalGranularity:
-          type: string
-        emissionFactorType:
-          type: string
-        history:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
-        forecast:
-          type: array
-          items:
-            type: object
-            additionalProperties: true
   parameters:
     Temporality:
       name: temporality
@@ -102,6 +71,37 @@ components:
         - quarterly
         - yearly
         default: hourly
+  schemas:
+    SignalResponse:
+      type: object
+      properties:
+        zone:
+          type: string
+        datetime:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        isEstimated:
+          type: boolean
+        estimationMethod:
+          type: string
+          nullable: true
+        temporalGranularity:
+          type: string
+        emissionFactorType:
+          type: string
+        history:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        forecast:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
   securitySchemes:
     authToken:
       type: apiKey

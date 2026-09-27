@@ -68,6 +68,24 @@ paths:
               schema:
                 $ref: '#/components/schemas/SignalResponse'
 components:
+  parameters:
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
   schemas:
     SignalResponse:
       type: object
@@ -99,24 +117,6 @@ components:
           items:
             type: object
             additionalProperties: true
-  parameters:
-    Temporality:
-      name: temporality
-      in: path
-      required: true
-      description: Time horizon of the signal.
-      schema:
-        type: string
-        enum:
-        - latest
-        - past
-        - forecast
-    Zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
-      schema:
-        type: string
   securitySchemes:
     authToken:
       type: apiKey

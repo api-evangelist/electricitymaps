@@ -35,30 +35,6 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    lon:
-      name: lon
-      in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
-      required: false
-      schema:
-        type: string
-    lat:
-      name: lat
-      in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
   schemas:
     PowerConsumptionBreakdown:
       type: object
@@ -72,13 +48,6 @@ components:
           $ref: '#/components/schemas/SourceBreakdown'
         powerConsumptionTotal:
           type: number
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        status:
-          type: string
     SourceBreakdown:
       type: object
       description: Power in MW per production type. Values may be null when unknown.
@@ -131,6 +100,13 @@ components:
           type:
           - number
           - 'null'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        status:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid auth-token.
@@ -138,6 +114,30 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
   securitySchemes:
     authToken:
       type: apiKey

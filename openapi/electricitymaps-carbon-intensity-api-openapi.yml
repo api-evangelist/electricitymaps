@@ -81,6 +81,8 @@ paths:
     servers:
     - url: https://api.electricitymap.org/v3
   /v3/carbon-intensity/{temporality}:
+    servers:
+    - url: https://api.electricitymap.org/v3
     get:
       operationId: getCarbonIntensity
       summary: Get carbon intensity signal
@@ -102,9 +104,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignalResponse'
+  /v3/fossil-only-carbon-intensity/{temporality}:
     servers:
     - url: https://api.electricitymap.org/v3
-  /v3/fossil-only-carbon-intensity/{temporality}:
     get:
       operationId: getFossilOnlyCarbonIntensity
       summary: Get fossil-only carbon intensity
@@ -120,101 +122,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/SignalResponse'
-    servers:
-    - url: https://api.electricitymap.org/v3
 components:
-  parameters:
-    lon:
-      name: lon
-      in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
-      required: false
-      schema:
-        type: string
-    lat:
-      name: lat
-      in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    Lat:
-      name: lat
-      in: query
-      description: Latitude (used in place of zone).
-      schema:
-        type: number
-    TemporalGranularity:
-      name: temporalGranularity
-      in: query
-      description: Temporal aggregation of the response.
-      schema:
-        type: string
-        enum:
-        - 5_minutes
-        - 15_minutes
-        - hourly
-        - daily
-        - monthly
-        - quarterly
-        - yearly
-        default: hourly
-    Lon:
-      name: lon
-      in: query
-      description: Longitude (used in place of zone).
-      schema:
-        type: number
-    EmissionFactorType:
-      name: emissionFactorType
-      in: query
-      description: Emission factor methodology.
-      schema:
-        type: string
-        enum:
-        - lifecycle
-        - direct
-        default: lifecycle
-    Temporality:
-      name: temporality
-      in: path
-      required: true
-      description: Time horizon of the signal.
-      schema:
-        type: string
-        enum:
-        - latest
-        - past
-        - forecast
-    Zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
-      schema:
-        type: string
-    DisableEstimations:
-      name: disableEstimations
-      in: query
-      description: Exclude estimated data points.
-      schema:
-        type: boolean
-        default: false
-  responses:
-    Unauthorized:
-      description: Missing or invalid auth-token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     CarbonIntensity:
       type: object
@@ -308,6 +216,98 @@ components:
           items:
             type: object
             additionalProperties: true
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
+    EmissionFactorType:
+      name: emissionFactorType
+      in: query
+      description: Emission factor methodology.
+      schema:
+        type: string
+        enum:
+        - lifecycle
+        - direct
+        default: lifecycle
+    DisableEstimations:
+      name: disableEstimations
+      in: query
+      description: Exclude estimated data points.
+      schema:
+        type: boolean
+        default: false
+    Lon:
+      name: lon
+      in: query
+      description: Longitude (used in place of zone).
+      schema:
+        type: number
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
+    Lat:
+      name: lat
+      in: query
+      description: Latitude (used in place of zone).
+      schema:
+        type: number
+    TemporalGranularity:
+      name: temporalGranularity
+      in: query
+      description: Temporal aggregation of the response.
+      schema:
+        type: string
+        enum:
+        - 5_minutes
+        - 15_minutes
+        - hourly
+        - daily
+        - monthly
+        - quarterly
+        - yearly
+        default: hourly
   securitySchemes:
     authToken:
       type: apiKey
