@@ -82,95 +82,7 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  parameters:
-    lon:
-      name: lon
-      in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
-    zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
-      required: false
-      schema:
-        type: string
-    lat:
-      name: lat
-      in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
-      required: false
-      schema:
-        type: number
-        format: float
   schemas:
-    SourceBreakdown:
-      type: object
-      description: Power in MW per production type. Values may be null when unknown.
-      properties:
-        nuclear:
-          type:
-          - number
-          - 'null'
-        geothermal:
-          type:
-          - number
-          - 'null'
-        biomass:
-          type:
-          - number
-          - 'null'
-        coal:
-          type:
-          - number
-          - 'null'
-        wind:
-          type:
-          - number
-          - 'null'
-        solar:
-          type:
-          - number
-          - 'null'
-        hydro:
-          type:
-          - number
-          - 'null'
-        gas:
-          type:
-          - number
-          - 'null'
-        oil:
-          type:
-          - number
-          - 'null'
-        unknown:
-          type:
-          - number
-          - 'null'
-        hydro discharge:
-          type:
-          - number
-          - 'null'
-        battery discharge:
-          type:
-          - number
-          - 'null'
-    PowerBreakdownForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            $ref: '#/components/schemas/PowerBreakdown'
-        updatedAt:
-          type: string
-          format: date-time
     PowerBreakdown:
       type: object
       properties:
@@ -235,6 +147,94 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/PowerBreakdown'
+    SourceBreakdown:
+      type: object
+      description: Power in MW per production type. Values may be null when unknown.
+      properties:
+        nuclear:
+          type:
+          - number
+          - 'null'
+        geothermal:
+          type:
+          - number
+          - 'null'
+        biomass:
+          type:
+          - number
+          - 'null'
+        coal:
+          type:
+          - number
+          - 'null'
+        wind:
+          type:
+          - number
+          - 'null'
+        solar:
+          type:
+          - number
+          - 'null'
+        hydro:
+          type:
+          - number
+          - 'null'
+        gas:
+          type:
+          - number
+          - 'null'
+        oil:
+          type:
+          - number
+          - 'null'
+        unknown:
+          type:
+          - number
+          - 'null'
+        hydro discharge:
+          type:
+          - number
+          - 'null'
+        battery discharge:
+          type:
+          - number
+          - 'null'
+    PowerBreakdownForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            $ref: '#/components/schemas/PowerBreakdown'
+        updatedAt:
+          type: string
+          format: date-time
+  parameters:
+    lon:
+      name: lon
+      in: query
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
+    zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g. DE, FR, GB, US-CAL-CISO). Alternative to lat/lon.
+      required: false
+      schema:
+        type: string
+    lat:
+      name: lat
+      in: query
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      required: false
+      schema:
+        type: number
+        format: float
   securitySchemes:
     authToken:
       type: apiKey

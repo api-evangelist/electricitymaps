@@ -37,6 +37,12 @@ paths:
                 $ref: '#/components/schemas/SignalResponse'
 components:
   parameters:
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
     Temporality:
       name: temporality
       in: path
@@ -48,12 +54,6 @@ components:
         - latest
         - past
         - forecast
-    Zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
-      schema:
-        type: string
   schemas:
     SignalResponse:
       type: object

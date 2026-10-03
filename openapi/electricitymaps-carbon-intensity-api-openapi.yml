@@ -159,15 +159,6 @@ components:
           type: string
         status:
           type: string
-    CarbonIntensityHistory:
-      type: object
-      properties:
-        zone:
-          type: string
-        history:
-          type: array
-          items:
-            $ref: '#/components/schemas/CarbonIntensity'
     CarbonIntensityForecast:
       type: object
       properties:
@@ -186,6 +177,15 @@ components:
         updatedAt:
           type: string
           format: date-time
+    CarbonIntensityHistory:
+      type: object
+      properties:
+        zone:
+          type: string
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarbonIntensity'
     SignalResponse:
       type: object
       properties:
@@ -258,35 +258,12 @@ components:
         - latest
         - past
         - forecast
-    EmissionFactorType:
-      name: emissionFactorType
-      in: query
-      description: Emission factor methodology.
-      schema:
-        type: string
-        enum:
-        - lifecycle
-        - direct
-        default: lifecycle
-    DisableEstimations:
-      name: disableEstimations
-      in: query
-      description: Exclude estimated data points.
-      schema:
-        type: boolean
-        default: false
     Lon:
       name: lon
       in: query
       description: Longitude (used in place of zone).
       schema:
         type: number
-    Zone:
-      name: zone
-      in: query
-      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
-      schema:
-        type: string
     Lat:
       name: lat
       in: query
@@ -308,6 +285,29 @@ components:
         - quarterly
         - yearly
         default: hourly
+    DisableEstimations:
+      name: disableEstimations
+      in: query
+      description: Exclude estimated data points.
+      schema:
+        type: boolean
+        default: false
+    EmissionFactorType:
+      name: emissionFactorType
+      in: query
+      description: Emission factor methodology.
+      schema:
+        type: string
+        enum:
+        - lifecycle
+        - direct
+        default: lifecycle
+    Zone:
+      name: zone
+      in: query
+      description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
+      schema:
+        type: string
   securitySchemes:
     authToken:
       type: apiKey
