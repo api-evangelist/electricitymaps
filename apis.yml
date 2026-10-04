@@ -238,6 +238,9 @@ apis:
   - type: OpenAPI
     url: openapi/electricitymaps-renewables-api-openapi.yml
 common:
+- type: CapabilityMap
+  url: capabilities/electricitymaps-capability-edges.yml
+  name: Electricity Maps Business Capability Map
 - type: AgenticAccess
   url: agentic-access/electricitymaps-agentic-access.yml
 - type: DomainSecurity
