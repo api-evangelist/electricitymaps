@@ -124,6 +124,33 @@ paths:
                 $ref: '#/components/schemas/SignalResponse'
 components:
   schemas:
+    CarbonIntensityHistory:
+      type: object
+      properties:
+        zone:
+          type: string
+        history:
+          type: array
+          items:
+            $ref: '#/components/schemas/CarbonIntensity'
+    CarbonIntensityForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            type: object
+            properties:
+              carbonIntensity:
+                type: integer
+              datetime:
+                type: string
+                format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     CarbonIntensity:
       type: object
       properties:
@@ -159,33 +186,6 @@ components:
           type: string
         status:
           type: string
-    CarbonIntensityForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            type: object
-            properties:
-              carbonIntensity:
-                type: integer
-              datetime:
-                type: string
-                format: date-time
-        updatedAt:
-          type: string
-          format: date-time
-    CarbonIntensityHistory:
-      type: object
-      properties:
-        zone:
-          type: string
-        history:
-          type: array
-          items:
-            $ref: '#/components/schemas/CarbonIntensity'
     SignalResponse:
       type: object
       properties:
@@ -216,18 +216,11 @@ components:
           items:
             type: object
             additionalProperties: true
-  responses:
-    Unauthorized:
-      description: Missing or invalid auth-token.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    lon:
-      name: lon
+    lat:
+      name: lat
       in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
       required: false
       schema:
         type: number
@@ -239,10 +232,10 @@ components:
       required: false
       schema:
         type: string
-    lat:
-      name: lat
+    lon:
+      name: lon
       in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
       required: false
       schema:
         type: number
@@ -258,18 +251,35 @@ components:
         - latest
         - past
         - forecast
-    Lon:
-      name: lon
-      in: query
-      description: Longitude (used in place of zone).
-      schema:
-        type: number
     Lat:
       name: lat
       in: query
       description: Latitude (used in place of zone).
       schema:
         type: number
+    DisableEstimations:
+      name: disableEstimations
+      in: query
+      description: Exclude estimated data points.
+      schema:
+        type: boolean
+        default: false
+    Lon:
+      name: lon
+      in: query
+      description: Longitude (used in place of zone).
+      schema:
+        type: number
+    EmissionFactorType:
+      name: emissionFactorType
+      in: query
+      description: Emission factor methodology.
+      schema:
+        type: string
+        enum:
+        - lifecycle
+        - direct
+        default: lifecycle
     TemporalGranularity:
       name: temporalGranularity
       in: query
@@ -285,29 +295,19 @@ components:
         - quarterly
         - yearly
         default: hourly
-    DisableEstimations:
-      name: disableEstimations
-      in: query
-      description: Exclude estimated data points.
-      schema:
-        type: boolean
-        default: false
-    EmissionFactorType:
-      name: emissionFactorType
-      in: query
-      description: Emission factor methodology.
-      schema:
-        type: string
-        enum:
-        - lifecycle
-        - direct
-        default: lifecycle
     Zone:
       name: zone
       in: query
       description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
       schema:
         type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid auth-token.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     authToken:
       type: apiKey

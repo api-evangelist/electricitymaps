@@ -39,6 +39,17 @@ paths:
                 $ref: '#/components/schemas/SignalResponse'
 components:
   parameters:
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
     TemporalGranularity:
       name: temporalGranularity
       in: query
@@ -60,17 +71,6 @@ components:
       description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
       schema:
         type: string
-    Temporality:
-      name: temporality
-      in: path
-      required: true
-      description: Time horizon of the signal.
-      schema:
-        type: string
-        enum:
-        - latest
-        - past
-        - forecast
   schemas:
     SignalResponse:
       type: object
