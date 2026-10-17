@@ -133,24 +133,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CarbonIntensity'
-    CarbonIntensityForecast:
-      type: object
-      properties:
-        zone:
-          type: string
-        forecast:
-          type: array
-          items:
-            type: object
-            properties:
-              carbonIntensity:
-                type: integer
-              datetime:
-                type: string
-                format: date-time
-        updatedAt:
-          type: string
-          format: date-time
     CarbonIntensity:
       type: object
       properties:
@@ -179,6 +161,24 @@ components:
           type:
           - string
           - 'null'
+    CarbonIntensityForecast:
+      type: object
+      properties:
+        zone:
+          type: string
+        forecast:
+          type: array
+          items:
+            type: object
+            properties:
+              carbonIntensity:
+                type: integer
+              datetime:
+                type: string
+                format: date-time
+        updatedAt:
+          type: string
+          format: date-time
     Error:
       type: object
       properties:
@@ -217,10 +217,10 @@ components:
             type: object
             additionalProperties: true
   parameters:
-    lat:
-      name: lat
+    lon:
+      name: lon
       in: query
-      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
+      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
       required: false
       schema:
         type: number
@@ -232,54 +232,20 @@ components:
       required: false
       schema:
         type: string
-    lon:
-      name: lon
+    lat:
+      name: lat
       in: query
-      description: Longitude of the location to resolve to a zone. Used with lat as an alternative to zone.
+      description: Latitude of the location to resolve to a zone. Used with lon as an alternative to zone.
       required: false
       schema:
         type: number
         format: float
-    Temporality:
-      name: temporality
-      in: path
-      required: true
-      description: Time horizon of the signal.
-      schema:
-        type: string
-        enum:
-        - latest
-        - past
-        - forecast
     Lat:
       name: lat
       in: query
       description: Latitude (used in place of zone).
       schema:
         type: number
-    DisableEstimations:
-      name: disableEstimations
-      in: query
-      description: Exclude estimated data points.
-      schema:
-        type: boolean
-        default: false
-    Lon:
-      name: lon
-      in: query
-      description: Longitude (used in place of zone).
-      schema:
-        type: number
-    EmissionFactorType:
-      name: emissionFactorType
-      in: query
-      description: Emission factor methodology.
-      schema:
-        type: string
-        enum:
-        - lifecycle
-        - direct
-        default: lifecycle
     TemporalGranularity:
       name: temporalGranularity
       in: query
@@ -295,12 +261,46 @@ components:
         - quarterly
         - yearly
         default: hourly
+    DisableEstimations:
+      name: disableEstimations
+      in: query
+      description: Exclude estimated data points.
+      schema:
+        type: boolean
+        default: false
+    Temporality:
+      name: temporality
+      in: path
+      required: true
+      description: Time horizon of the signal.
+      schema:
+        type: string
+        enum:
+        - latest
+        - past
+        - forecast
     Zone:
       name: zone
       in: query
       description: Zone identifier (e.g., SE, DE, US-CAL-CISO).
       schema:
         type: string
+    EmissionFactorType:
+      name: emissionFactorType
+      in: query
+      description: Emission factor methodology.
+      schema:
+        type: string
+        enum:
+        - lifecycle
+        - direct
+        default: lifecycle
+    Lon:
+      name: lon
+      in: query
+      description: Longitude (used in place of zone).
+      schema:
+        type: number
   responses:
     Unauthorized:
       description: Missing or invalid auth-token.
