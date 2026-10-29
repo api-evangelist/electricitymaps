@@ -1,4 +1,4 @@
-# Electricity Maps (electricitymaps)
+# Electricity Maps
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,139 +66,139 @@
 
 Electricity Maps provides electricity grid data - carbon intensity and power production/consumption breakdown - for 200+ zones worldwide, in real time, as historical series, and as 24-72 hour forecasts. The REST API serves the same data behind the live electricity map at app.electricitymap.org, authenticated with an auth-token header.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/electricitymaps/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/electricitymaps/refs/heads/main/apis.yml)
+**Areas:** Energy · Carbon Intensity · Electricity · Grid · Sustainability · Climate
 
-## Tags
+## Electricity Maps on APIs.io
 
-- Energy
-- Carbon Intensity
-- Electricity
-- Grid
-- Sustainability
+Everything profiled for Electricity Maps is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/electricitymaps/](https://apis.io/providers/electricitymaps/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (11)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Electricity Maps Carbon Intensity API](https://apis.io/apis/electricitymaps/electricitymaps-carbon-intensity-api/) — The Carbon Intensity API from Electricity Maps — 3 operation(s) for carbon intensity.
+- [Electricity Maps Forecast API](https://apis.io/apis/electricitymaps/electricitymaps-forecast-api/) — The Forecast API from Electricity Maps — 2 operation(s) for forecast.
+- [Electricity Maps Health API](https://apis.io/apis/electricitymaps/electricitymaps-health-api/) — The Health API from Electricity Maps — 1 operation(s) for health.
+- [Electricity Maps Power Breakdown API](https://apis.io/apis/electricitymaps/electricitymaps-power-breakdown-api/) — The Power Breakdown API from Electricity Maps — 3 operation(s) for power breakdown.
+- [Electricity Maps Power Consumption API](https://apis.io/apis/electricitymaps/electricitymaps-power-consumption-api/) — The Power Consumption API from Electricity Maps — 1 operation(s) for power consumption.
+- [Electricity Maps Power Production API](https://apis.io/apis/electricitymaps/electricitymaps-power-production-api/) — The Power Production API from Electricity Maps — 1 operation(s) for power production.
+- [Electricity Maps Zones API](https://apis.io/apis/electricitymaps/electricitymaps-zones-api/) — The Zones API from Electricity Maps — 1 operation(s) for zones.
+- [Electricity Maps Electricity Mix API](https://apis.io/apis/electricitymaps/electricitymaps-electricitymix-api/) — Power production and consumption breakdown by source.
+- [Electricity Maps Grid Metrics API](https://apis.io/apis/electricitymaps/electricitymaps-gridmetrics-api/) — Total load, net load, and electricity flows between zones.
+- [Electricity Maps Pricing API](https://apis.io/apis/electricitymaps/electricitymaps-pricing-api/) — Day-ahead electricity pricing.
+- [Electricity Maps Renewables API](https://apis.io/apis/electricitymaps/electricitymaps-renewables-api/) — Renewable and carbon-free percentage signals.
 
-## APIs
+### Published properties
 
-### Electricity Maps Carbon Intensity API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Last-known, 24-hour history, and 24-72 hour forecast carbon intensity (gCO2eq/kWh) of electricity consumed in a zone, queryable by zone identifier or by latitude/longitude geolocation.
+#### Agentic access (1)
 
-- **Human URL:** [https://portal.electricitymaps.com/docs/api](https://portal.electricitymaps.com/docs/api)
-- **Base URL:** `https://api.electricitymap.org/v3`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Electricitymaps Agentic Access](https://apis.io/agentic-access/electricitymaps/electricitymaps-agentic-access/)
 
-- Carbon Intensity
-- Emissions
-- gCO2eq
+#### Collections (14)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://portal.electricitymaps.com/docs/api)
-- [API Reference](https://portal.electricitymaps.com/docs/api#carbon-intensity)
-- [OpenAPI](openapi/electricitymaps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/electricitymaps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/electricitymaps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Electricity Maps API](https://apis.io/collections/electricitymaps/open-electricity-maps/)
+- [Electricity Maps API](https://apis.io/collections/electricitymaps/open-electricitymaps/)
+- [Electricity Maps Carbon Intensity API](https://apis.io/collections/electricitymaps/open-electricitymaps-carbon-intensity-api/)
+- [Electricity Maps CarbonIntensity API](https://apis.io/collections/electricitymaps/open-electricitymaps-carbonintensity-api/)
+- [Electricity Maps CarbonIntensity ElectricityMix API](https://apis.io/collections/electricitymaps/open-electricitymaps-electricitymix-api/)
+- [Electricity Maps Carbon Intensity Forecast API](https://apis.io/collections/electricitymaps/open-electricitymaps-forecast-api/)
+- [Electricity Maps CarbonIntensity GridMetrics API](https://apis.io/collections/electricitymaps/open-electricitymaps-gridmetrics-api/)
+- [Electricity Maps Carbon Intensity Health API](https://apis.io/collections/electricitymaps/open-electricitymaps-health-api/)
+- [Electricity Maps Carbon Intensity Power Breakdown API](https://apis.io/collections/electricitymaps/open-electricitymaps-power-breakdown-api/)
+- [Electricity Maps Carbon Intensity Power Consumption API](https://apis.io/collections/electricitymaps/open-electricitymaps-power-consumption-api/)
+- [Electricity Maps Carbon Intensity Power Production API](https://apis.io/collections/electricitymaps/open-electricitymaps-power-production-api/)
+- [Electricity Maps CarbonIntensity Pricing API](https://apis.io/collections/electricitymaps/open-electricitymaps-pricing-api/)
+- [Electricity Maps CarbonIntensity Renewables API](https://apis.io/collections/electricitymaps/open-electricitymaps-renewables-api/)
+- [Electricity Maps Carbon Intensity Zones API](https://apis.io/collections/electricitymaps/open-electricitymaps-zones-api/)
 
-### Electricity Maps Power Breakdown API
+#### Security (2)
 
-Combined power consumption and production breakdown for a zone by source (nuclear, solar, wind, hydro, gas, coal, oil, biomass, geothermal, battery), with import/export flows, available as latest, 24-hour history, and forecast.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://portal.electricitymaps.com/docs/api](https://portal.electricitymaps.com/docs/api)
-- **Base URL:** `https://api.electricitymap.org/v3`
+- [Electricitymaps Authentication](https://apis.io/security/electricitymaps/electricitymaps-authentication/)
+- [Electricitymaps Domain Security](https://apis.io/security/electricitymaps/electricitymaps-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Power Breakdown
-- Generation
-- Electricity Mix
+Published plans, tiers and prices.
 
-#### Properties
+- [Electricitymaps Plans Pricing](https://apis.io/plans/electricitymaps/electricitymaps-plans-pricing/)
 
-- [Documentation](https://portal.electricitymaps.com/docs/api)
-- [API Reference](https://portal.electricitymaps.com/docs/api#power-breakdown)
-- [OpenAPI](openapi/electricitymaps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/electricitymaps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/electricitymaps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Electricity Maps Power Consumption & Production API
+Published request limits.
 
-Dedicated flow-traced power consumption breakdown and physical power production breakdown endpoints for a zone, reporting megawatts per source and net import/export exchanges with neighbouring zones.
+- [Electricitymaps Rate Limits](https://apis.io/rate-limits/electricitymaps/electricitymaps-rate-limits/)
 
-- **Human URL:** [https://portal.electricitymaps.com/docs/api](https://portal.electricitymaps.com/docs/api)
-- **Base URL:** `https://api.electricitymap.org/v3`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Power Consumption
-- Power Production
-- Flow Tracing
+- [Electricitymaps Finops](https://apis.io/finops/electricitymaps/electricitymaps-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://portal.electricitymaps.com/docs/api)
-- [API Reference](https://portal.electricitymaps.com/docs/api#power-consumption-breakdown)
-- [OpenAPI](openapi/electricitymaps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/electricitymaps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/electricitymaps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Electricity Maps Zones API
-
-Lists all available zones with the endpoints accessible for the caller's token, plus a health endpoint reporting API status. Both can be requested without an API key.
-
-- **Human URL:** [https://portal.electricitymaps.com/docs/api](https://portal.electricitymaps.com/docs/api)
-- **Base URL:** `https://api.electricitymap.org/v3`
-
-#### Tags
-
-- Zones
-- Coverage
-- Metadata
-
-#### Properties
-
-- [Documentation](https://portal.electricitymaps.com/docs/api)
-- [API Reference](https://portal.electricitymaps.com/docs/api#zones)
-- [OpenAPI](openapi/electricitymaps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/electricitymaps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/electricitymaps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Electricity Maps Forecast API
-
-24-72 hour ahead forecasts of carbon intensity and power production breakdown for a zone, used to schedule compute and other loads toward lower-carbon hours.
-
-- **Human URL:** [https://portal.electricitymaps.com/docs/api](https://portal.electricitymaps.com/docs/api)
-- **Base URL:** `https://api.electricitymap.org/v3`
-
-#### Tags
-
-- Forecast
-- Predictions
-- Day Ahead
-
-#### Properties
-
-- [Documentation](https://portal.electricitymaps.com/docs/api)
-- [API Reference](https://portal.electricitymaps.com/docs/api#forecast)
-- [OpenAPI](openapi/electricitymaps-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/electricitymaps.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/electricitymaps.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/electricitymaps)
-- [LinkedIn](https://www.linkedin.com/company/electricitymaps)
 - [Website](https://www.electricitymaps.com)
 - [Documentation](https://portal.electricitymaps.com/docs/api)
-- [Plans](plans/electricitymaps-plans-pricing.yml)
-- [Rate Limits](rate-limits/electricitymaps-rate-limits.yml)
-- [Fin Ops](finops/electricitymaps-finops.yml)
+- [Pricing](https://www.electricitymaps.com/api-pricing)
+- [Blog](https://www.electricitymaps.com/blog)
+- [GitHub](https://github.com/electricitymaps)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 29.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 48.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 31.0 |
+| Access clarity | 18.4 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 9.8** — Energy & Utilities
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/electricitymaps/](https://apis.io/providers/electricitymaps/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Electricity Maps: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/electricitymaps/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
